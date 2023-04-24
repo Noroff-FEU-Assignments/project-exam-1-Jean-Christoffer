@@ -1,3 +1,4 @@
+
 window.onload = function(){
     const path = window.location.pathname.split('/')
 
@@ -45,6 +46,7 @@ window.onload = function(){
                 return;
             }
             window.history.pushState('','',path)
+          
         })
     })
     function loadPage($path){

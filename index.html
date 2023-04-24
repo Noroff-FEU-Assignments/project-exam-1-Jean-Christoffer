@@ -12,7 +12,7 @@
     <title>Blog</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="application">
       <header class="flex">
         <div class="hamburger" aria-controls="nav" aria-expanded="false" role="navigation">
             <span class="line top"></span>
@@ -40,9 +40,16 @@
 
             </ul>
         </nav>
+        <form class="search">
+          <div>
+            <input type="text" placeholder="search">
+            <button>search</button>
+          </div>
+          
+        </form>
     </header>
      <main id="content">
-        <section id="container"></section>
+        <section id="container" class="content-container"></section>
      </main>
      <footer>i am a footer</footer>
     </div>

@@ -1,16 +1,21 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
+html{
+  height: 100%;
+}
 body {
   margin: 0;
   box-sizing: border-box;
-  color: black;
+
+
 }
-a{
-  text-decoration: none;
-  color: white;
+.application{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 .logo-wrapper{
   color: white;
 }
@@ -20,6 +25,7 @@ ul{
 }
 .menu_item{
   cursor: pointer;
+  color: white;
 }
 .flex{
   display: flex;
@@ -44,7 +50,7 @@ header {
 
 @media (max-width: 52rem){
        header{
-      justify-content: left;
+      justify-content: space-between;
       box-shadow: 0px 2px 2px black;
   }
 
@@ -65,12 +71,7 @@ header {
       
 
 }
-  .active-page{
-      background: white;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
+
 
   /*Hamburger Menu*/
 
@@ -123,17 +124,17 @@ header {
 
   @media(min-width:52rem){
 
-      .logo-container{
-          margin: 5px 10px;
-      }
        .hamburger{
           display: none;
       }
       header {
-          justify-content: center; 
+          justify-content: space-around;
+          padding: 10px;    
       }
 
        .nav{
+
+        
       gap:clamp(1rem, 4vw, 4rem);
       padding-inline:clamp(2.5rem, 6vw , 9rem);
       background: white;
@@ -148,3 +149,15 @@ header {
       text-decoration: underline white;
 }
 }      
+.content-container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+footer{
+  margin-top: auto;
+  background: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
