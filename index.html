@@ -3,11 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="src/components/hamburger.js" type="module" defer></script>
+    <script src="src/components/route.js" type="module" defer></script>
+
+
     <title>Blog</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div id="app">
+      <header class="flex">
+        <div class="hamburger" aria-controls="nav" aria-expanded="false" role="navigation">
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+        </div>
+
+        <div class="logo-wrapper flex">
+            <div class="logo-container">
+                <img alt="blog-logo"  class="menu_item" value="home" src="vite.svg" class="logo" />
+            </div>
+            <div class="title-container">
+               <p class="title-site">Blog</p>             
+            </div>
+        </div>
+
+        <nav id="nav">
+            <ul class="nav flex">
+
+                <li class="menu_item" value="home">Home</li>
+                <li class="menu_item" value="contact">Contact</li>
+                <li class="menu_item" value="posts">Posts</li>
+                <li class="menu_item" value="about">About</li>
+                <li class="menu_item" value="archive">Archive</li>
+
+            </ul>
+        </nav>
+    </header>
+     <main id="content">
+        <section id="container"></section>
+     </main>
+     <footer>i am a footer</footer>
+    </div>
+
   </body>
 </html>
