@@ -3,11 +3,12 @@
 }
 html{
   height: 100%;
+  font-size: 16px;
 }
 body {
   margin: 0;
   box-sizing: border-box;
-
+  font-family: 'Roboto', sans-serif;
 
 }
 .application{
@@ -19,6 +20,10 @@ body {
 .logo-wrapper{
   color: white;
 }
+h1,h2,h3{
+  font-family: 'Roboto Slab', serif;
+}
+
 /* Navigation*/
 ul{
   list-style: none;
@@ -39,7 +44,7 @@ header {
 .nav{
   padding: 0;
   margin: 0;
-  font-size: 20px;
+  font-size: 1rem;
   position: sticky;
 }
 .logo-wrapper, header {
@@ -135,7 +140,7 @@ header {
        .nav{
 
         
-      gap:clamp(1rem, 4vw, 4rem);
+      gap:clamp(1rem, 4vw, 2rem);
       padding-inline:clamp(2.5rem, 6vw , 9rem);
       background: white;
       background-clip: text;
