@@ -1,67 +1,51 @@
-
-window.onload = function(){
-    const path = window.location.pathname.split('/')
-
-    switch(path[1])
-    {
-        case "":
-        {
-            loadPage('home');
-            break;
-        }
-        case "contact":
-        {
-            loadPage('contact');
-            break;
-        }
-        case "posts":
-        {
-            loadPage('posts');
-            break;
-        }
-        case "about":
-        {
-            loadPage('about');
-            break;
-        }    
-        case "archive":
-        {
-            loadPage('archive');
-            break;
-        }
-        default:
-        {
-            loadPage('404')
-            break;
-
-        }         
-    }
-
-    document.querySelectorAll('.menu_item').forEach(item => {
-        item.addEventListener('click',()=> {
-            const path = item.getAttribute('value')
-            loadPage(path)
-            if(path === 'home'){
-                window.history.pushState('','','/')
-                return;
-            }
-            window.history.pushState('','',path)
-          
+const spinner = document.querySelector('.spinner')
+window.addEventListener("hashchange", function () {
+    // Get the hash value from the URL
+    var hash = window.location.hash;
+  
+    // Load the appropriate content based on the hash value
+    if (hash === "#home") {
+      spinner.classList.add('show')
+      fetch("pages/home.html")
+        .then(function (response) {
+          return response.text();
         })
-    })
-    function loadPage($path){
-        if($path === '') return;
-
-        const container = document.querySelector('#container')
-
-        const request = new XMLHttpRequest()
-        request.open('GET','pages/' + $path + '.html');
-        request.send()
-        request.onload = function(){
-            if(request.status === 200){
-                container.innerHTML = request.responseText;
-                document.title = $path;
-            }
-        }
-    }
-}
+        .then(function (html) {
+          document.getElementById("content").innerHTML = html;
+        }).finally(()=>{spinner.classList.remove('show')})
+    } else if (hash === "#about") {
+      fetch("pages/about.html")
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (html) {
+          document.getElementById("content").innerHTML = html;
+        });
+    } else if (hash === "#contact") {
+      fetch("pages/contact.html")
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (html) {
+          document.getElementById("content").innerHTML = html;
+        });
+    } else if (hash === "#posts") {
+        fetch("pages/posts.html")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (html) {
+            document.getElementById("content").innerHTML = html;
+          });
+      } else if (hash === "#archive") {
+        fetch("pages/archive.html")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (html) {
+            document.getElementById("content").innerHTML = html;
+          });
+      }
+  });
+  window.dispatchEvent(new Event("hashchange"));
+  
