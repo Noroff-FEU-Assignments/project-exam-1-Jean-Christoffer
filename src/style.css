@@ -176,45 +176,94 @@ h1{
 }
 }
 
-.content-section{
-  max-width: 1000px;
-  margin: auto;
+/*slider*/
+
+  .arrow{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:3rem;
+    height: 3rem;
+    background-color: transparent;
+    color: black;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 3rem;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+    display: none;
+}
+.arrow:active{
+  background-color: #181616;
+  color: white;
+}
+.arrow-right{
+  right: 0;
+}
+.arrow-left{
+  left:0;
+}
+.wrapper{
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  margin: 0 auto;
   text-align: center;
-
 }
-
-.latest-posts-section {
+.slider{
   display: flex;
-  justify-content: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 2.9rem;
   flex-direction: column;
-  align-items: center ;
-  gap:35px;
-  margin-bottom: 20px;
+  align-items: center;
 }
+.wrapper::-webkit-scrollbar{
+  display: none;
+}
+
 @media(min-width:52rem){
-  .latest-posts-section{
-   flex-direction: row;
-   flex-wrap: wrap;
-   gap:15px;
+  .slider{
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 2.9rem;
   }
-  .content-section{
+  .wrapper{
+    max-width: 1200px;
     text-align: left;
-    max-width: 1090px;
+  }
+  .wrapper::-webkit-scrollbar{
+    display: none;
+
+  }
+  .arrow{
+    display: block;
   }
 }
 /*Blog-cards*/
 
 .blog-card{
+  position: relative;
+  max-width: 22rem;
   display: flex;
+  flex: 0 0 auto;
   text-align: left;
   flex-direction: column;
-  width: clamp(20rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
   background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 }
+
+
+
 .blog-card-img-container{
   max-width: 100%;
 }
@@ -249,6 +298,7 @@ h1{
   display: flex;
   flex-direction: column;
   gap: 0rem;
+
 }
 
 .card-body h4{
@@ -285,7 +335,17 @@ h1{
   font-weight: bold;
   display: block;
   margin-top: 10px;
+  height: 50px;
 }
+.subTitle-text{
+  height: 32px;
+}
+.read-more{
+  color: black;
+  text-decoration: underline;
+}
+
+
 /*Home*/
 
 .home-header{
@@ -322,6 +382,8 @@ h1{
   margin: 0 auto;
 }
 @media(min-width:52rem){
+
+  
   .hero-text h1{
     font-size: 2.2rem;
     text-underline-offset: 23px;

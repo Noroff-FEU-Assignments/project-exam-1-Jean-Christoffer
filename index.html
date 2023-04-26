@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">     
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script>     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="src/components/hamburger.js" type="module" defer></script>
 
@@ -47,7 +48,7 @@
                 <li class="menu_item" ><a href="posts.html">Posts</a></li>
                 <li class="menu_item" ><a href="contact.html">Contact</a></li>
                 <li class="menu_item" ><a href="about.html">About</a></li>
-                <li class="menu_item" ><a href="archive.html">Archive</a></li>
+       
 
             </ul>
         </nav>
@@ -59,14 +60,33 @@
             <h2>The number one electro blog</h2>
           </div>
         </section>
-        <section class="content-section">
+        <div class="wrapper">
+          <h1>Latest posts</h1>
+          <section class="slider" id="latest">
 
-        
-        <h1>Latest posts</h1>
-        <div class="latest-posts-section content-section">
-          
-        </div>
-      </section>
+                  <svg
+                  class="spinner"
+                  width="65px"
+                  height="65px"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+
+                <span class="arrow arrow-right"><i class="fa-solid fa-arrow-right"></i></span>
+                <span class="arrow arrow-left"><i class="fa-solid fa-arrow-left"></i></span>
+
+        </section>
+      </div>
      </main>
      <footer>i am a footer</footer>
     </div>
