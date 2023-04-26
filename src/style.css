@@ -257,9 +257,10 @@ h1{
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-  border-radius: 1em;
+  border-radius: 0.5em;
   background: #ECE9E6;
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #f1f0ef);
+
 }
 
 
@@ -328,7 +329,7 @@ h1{
 
 .title-link{
   color: black;
-  text-decoration: underline;
+ 
   cursor: pointer;
   font-size: 1.4rem;
   font-family: 'Inter Tight', sans-serif;
@@ -337,12 +338,16 @@ h1{
   margin-top: 10px;
   height: 50px;
 }
+.title-link:hover{
+  text-decoration: underline;
+}
 .subTitle-text{
   height: 32px;
 }
 .read-more{
   color: black;
   text-decoration: underline;
+  font-weight: bold;
 }
 
 
@@ -395,6 +400,30 @@ h1{
     font-size: 1.5rem;
   }
 
+}
+/*details*/
+.blog-section{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.blog-container{
+  position: relative;
+  max-width: 680px;
+  margin: auto;
+  font-size: 18px;
+  letter-spacing: -0.003em;
+  line-height: 28px;
+  padding: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+@media(min-width:52rem){
+  .blog-container{
+    font-size: 20px;
+    line-height: 32px;
+  }
 }
 /*Footer*/
 footer{

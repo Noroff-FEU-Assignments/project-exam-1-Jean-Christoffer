@@ -2,25 +2,15 @@
 import FetchHelper from "./fetchHelper.js";
 const latestSection = document.querySelector('#latest')
 const loader = document.querySelector('.spinner')
-const sliders = [...document.querySelectorAll('.slider')]
-const next = [...document.querySelectorAll('.arrow-right')]
-const prev = [...document.querySelectorAll('.arrow-left')]
-
-sliders.forEach((item,index) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    next[index].addEventListener('click',()=>{
-        item.scrollLeft += containerWidth
-    })
-    prev[index].addEventListener('click',()=>{
-        item.scrollLeft -= containerWidth
-    })
-})
+const slider = document.querySelector('.slider')
+const next = document.querySelector('.arrow-right')
+const prev = document.querySelector('.arrow-left')
 
 
-
-
+let containerDimensions = slider.getBoundingClientRect();
+let containerWidth = containerDimensions.width;
+next.addEventListener('click',()=>{slider.scrollLeft += containerWidth * 1.5})
+prev.addEventListener('click',()=>{slider.scrollLeft -= containerWidth * 1.5})
 
 let maxPerPage = `&per_page=6`
 let titleAscending = `?orderby=title&order=asc`
@@ -31,7 +21,7 @@ let dateDescending = `&orderby=date&order=desc`
 
 async function getData(){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}?_embed`)
         const data = await API.get(`${maxPerPage}${dateAscending}`)
 
         return data
