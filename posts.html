@@ -18,9 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="src/components/hamburger.js" type="module" defer></script>
+    <script src="src/components/posts.js" type="module" defer></script>
 
-    <script src="src/components/home.js" type="module" defer></script>
-    
 
     <title>WAVE</title>
   </head>
@@ -52,7 +51,49 @@
         </nav>
     </header>
      <main id="content">
-      
+      <section class="section-wrapper">
+        <h1>Posts</h1>
+        <form class="sort-form">
+
+          <select class="category">
+            <option value="">--Category--</option>
+            <option value="AI technology">AI technology</option>
+            <option value="Sound">Sound</option>          
+            <option value="Scene">Scene</option>
+          </select>
+
+          <select class="oldest-newest">
+            <option value="new">Newest first</option>
+            <option value="old">Oldest first</option>
+          </select>
+
+        </form>
+        <div class="post-section">
+
+                <svg
+                class="spinner"
+                width="65px"
+                height="65px"
+                viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="path"
+                  fill="none"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  cx="33"
+                  cy="33"
+                  r="30"
+                ></circle>
+              </svg>
+
+            </div>
+      </section>
+      <div>
+        <button class="load-more">Show more</button>
+        <button class="load-less">Show less</button>
+      </div>
      </main>
      <footer>i am a footer</footer>
     </div>

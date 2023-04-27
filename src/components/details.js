@@ -5,9 +5,10 @@ const queryString = document.location.search;
 const params  = new URLSearchParams(queryString);
 const id = params.get("id");
 
-const selectors = ['.blog-section','.blog-title','.blog','.blog-container']
+const selectors = ['.blog-section','.blog-title','.blog','.blog-container','.date','.author','form',
+'.input-field-name','.input-field-comment']
 const mapSelect = selectors.map(element => document.querySelector(element))
-const [blogSection, blogTitle, blog,blogContainer] = mapSelect
+const [blogSection, blogTitle, blog,blogContainer,date,author,form,authorName,comment] = mapSelect
 
 async function getData(param){
     try{
@@ -23,6 +24,34 @@ async function getData(param){
     }
 }
 
+form.addEventListener('submit', function(e) {
+    
+    e.preventDefault()
+    const data = JSON.stringify({
+        
+        author_name: authorName.value,
+        content: comment.value
+    })
+
+    fetch(`https://wave.jeandahldev.no/wp-json/wp/v2/comments`,{
+        method:'post',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: data
+    })
+    .then((response) => {
+        if(response.ok === true){
+            console.log('worked!')
+        }
+        return response.json()
+    }).then((object)=> {
+
+    }).catch(error => console.log(error))
+    
+})
+
+
 function renderHtml(data){
 
     const formatedText = data.content.rendered
@@ -30,21 +59,36 @@ function renderHtml(data){
     const nodes = parser.parseFromString(formatedText, 'text/html').body.childNodes
 
     
-    nodes.forEach(element => {
-        const paragraph = document.createElement('p')
-        paragraph.className = 'paragraph-text'
-        paragraph.textContent =  element.textContent
-        return blogContainer.append(paragraph) 
-    })
+        nodes.forEach(element => {
+            const paragraph = document.createElement('p')
+            paragraph.className = 'paragraph-text'
+            paragraph.textContent =  element.textContent
+            return blogContainer.append(paragraph) 
+        })
 
     
 
 
     blogTitle.textContent =  data.title.rendered
+    author.textContent = `Author: ${data._embedded.author[0].name}`
+    
+    
+    const newDate = new Date(data.date)
+    
 
+    const getDay = newDate.getDate()
+    const getMonth = newDate.getMonth() + 1
+    const getYear = newDate.getFullYear()
 
+    let formatedMonth
+    let formatedDay
+    
+    getMonth < 10 ? formatedMonth = `0${getMonth}` : formatedMonth = getMonth
+    getDay < 10 ? formatedDay = `0${getDay}` : formatedDay = getDay
+    date.textContent =`Published: ${formatedDay}.${formatedMonth}.${getYear}`
+
+    
 }
-
 
 async function renderPage(){
     try{

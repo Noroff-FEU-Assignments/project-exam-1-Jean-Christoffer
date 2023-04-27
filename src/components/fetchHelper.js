@@ -6,4 +6,6 @@ export default class FetchHelper {
         const response = await fetch(this.baseURL + endpoint)
         return response.json()
     }
+
+
 }

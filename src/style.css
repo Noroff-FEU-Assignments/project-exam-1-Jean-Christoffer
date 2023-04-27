@@ -402,6 +402,10 @@ h1{
 
 }
 /*details*/
+.user-info{
+  display: flex;
+  flex-direction: column;
+}
 .blog-section{
   max-width: 1200px;
   margin: 0 auto;
@@ -425,6 +429,30 @@ h1{
     line-height: 32px;
   }
 }
+
+/*Post page*/
+.post-section{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:15px;
+  max-width: 1100px;
+}
+.section-wrapper{
+  max-width: 1100px;
+  margin: 0 auto;
+  
+}
+.section-wrapper h1{
+  width: 100%;
+  text-align: center;
+}
+@media(min-width:52rem){
+  .section-wrapper h1{
+    text-align: left;
+  }
+}
+
 /*Footer*/
 footer{
   margin-top: auto;

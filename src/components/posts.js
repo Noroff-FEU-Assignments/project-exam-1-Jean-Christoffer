@@ -1,18 +1,15 @@
-
 import FetchHelper from "./fetchHelper.js";
-const latestSection = document.querySelector('#latest')
+
 const loader = document.querySelector('.spinner')
-const slider = document.querySelector('.slider')
-const next = document.querySelector('.arrow-right')
-const prev = document.querySelector('.arrow-left')
+const postSection = document.querySelector('.post-section')
+const loadMore = document.querySelector('.load-more')
+const loadLess = document.querySelector('.load-less')
+const category = document.querySelector('.category')
+const sortFunction = document.querySelector('.oldest-newest')
 
 
-let containerDimensions = slider.getBoundingClientRect();
-let containerWidth = containerDimensions.width;
-next.addEventListener('click',()=>{slider.scrollLeft += containerWidth * 1.5})
-prev.addEventListener('click',()=>{slider.scrollLeft -= containerWidth * 1.5})
-
-let maxPerPage = `&per_page=6`
+let count = 100
+let maxPerPage = `&per_page=${count}`
 let titleAscending = `?orderby=title&order=asc`
 let orderByCategory = `?categories=5`
 
@@ -23,7 +20,7 @@ async function getData(){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
         const data = await API.get(`?_embed${maxPerPage}${dateDescending}`)
-        console.log(data)
+    
         return data
 
 
@@ -32,16 +29,40 @@ async function getData(){
     }
 }
 
+loadLess.style.display = 'none'
+loadMore.addEventListener('click',() => {
+    count = 12
+    loadMore.style.display = 'none'
+    loadLess.style.display = 'block'
+    renderPage()
+    
+})
+loadLess.addEventListener('click',()=>{
+    count = 2
+    loadMore.style.display = 'block'
+    loadLess.style.display = 'none'
+    renderPage()
+})
 
 
-async function renderHTML(data){
 
-        // Hero section
+ function renderHTML(data, categoryValue,value){
 
-        //Latest blog posts
+    postSection.textContent = ''
+    
+    let blogPosts = data
+    const filteredPosts = data.filter((posts) =>
+     posts._embedded['wp:term'][0][0].name.includes(categoryValue))
 
-        try{
-            data.forEach(async post => {
+    if(value === 'select'){
+        blogPosts = filteredPosts
+    }
+
+
+
+
+        
+    blogPosts.map( post => {
 
 
                 const formatedText = post.excerpt.rendered
@@ -124,22 +145,47 @@ async function renderHTML(data){
                 cardBody.append(category,postArticleContainer,cardBottom)
                 postContainer.append(imgContainer,cardBody)
                 
-                latestSection.append(postContainer)
+                postSection.append(postContainer)
                 
             });   
-        }catch(error){
-            console.log(error)
-        }
+        
 
     
 
 }
+category.addEventListener('change',()=>{
+    
+    renderPage(category.value,'select')
+})
+sortFunction.addEventListener('change',()=>{
+    if(sortFunction.value === 'old'){
 
-async function renderPage(){
+        blogPosts.sort((a,b)=> {
+            const aDate = new Date(a.date)
+            const bDate = new Date(b.date)
+                
+
+           return aDate - bDate
+
+        })
+    }
+    if(sortFunction.value === 'new'){
+
+        blogPosts.sort((a,b)=> {
+            const aDate = new Date(a.date)
+            const bDate = new Date(b.date)
+            
+           return bDate - aDate
+        })
+    }
+    
+})
+
+async function renderPage(categoryValue = '', value = ''){
     try{
         loader.classList.add('show')
         const data = await getData()
-        renderHTML(data)
+        renderHTML(data,categoryValue,value)
 
     }catch(error){
         console.log(error)
@@ -147,14 +193,9 @@ async function renderPage(){
         loader.classList.remove('show')
     }
 }
+
+window.onload = () => {
+    category.value = ''
+    sortFunction.value = 'new'
+}
 renderPage()
-
-
-
-
-
-
-
-
-
-

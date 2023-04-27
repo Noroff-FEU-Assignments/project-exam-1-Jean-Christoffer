@@ -22,7 +22,7 @@
          
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="src/components/hamburger.js" type="module" defer></script>
-
+    
     <script src="src/components/details.js" type="module" defer></script>
     
 
@@ -63,6 +63,10 @@
           
             <article class="blog-container">
               <h2 class="blog-title"></h2>
+              <div class="user-info">
+                <small class="date"></small>
+                <small class="author"></small>
+              </div>
               <svg
               class="spinner"
               width="65px"
@@ -83,7 +87,19 @@
    
             </article>
 
+
         </section>
+        <section class="comment-section">
+          <h5>
+            Leave a comment
+          </h5>
+
+        </section>
+        <form class="comment-form">
+          <input type="text" class="input-field-name" value="jean"/>
+          <input type="text" class="input-field-comment" value="some comment"/>
+          <button>Post comment</button>
+        </form>
      </main>
      <footer>i am a footer</footer>
     </div>
