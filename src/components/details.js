@@ -6,9 +6,9 @@ const params  = new URLSearchParams(queryString);
 const id = params.get("id");
 
 const selectors = ['.blog-section','.blog-title','.blog','.blog-container','.date','.author','form',
-'.input-field-name','.input-field-comment']
+'.input-field-name','.input-field-comment','.article-header']
 const mapSelect = selectors.map(element => document.querySelector(element))
-const [blogSection, blogTitle, blog,blogContainer,date,author,form,authorName,comment] = mapSelect
+const [blogSection, blogTitle, blog,blogContainer,date,author,form,authorName,comment, articleHeader] = mapSelect
 
 async function getData(param){
     try{
@@ -45,8 +45,6 @@ form.addEventListener('submit', function(e) {
             console.log('worked!')
         }
         return response.json()
-    }).then((object)=> {
-
     }).catch(error => console.log(error))
     
 })
@@ -68,7 +66,7 @@ function renderHtml(data){
 
     
 
-
+    articleHeader.style.backgroundImage = `url(${data._embedded['wp:featuredmedia'][0].source_url})`
     blogTitle.textContent =  data.title.rendered
     author.textContent = `Author: ${data._embedded.author[0].name}`
     

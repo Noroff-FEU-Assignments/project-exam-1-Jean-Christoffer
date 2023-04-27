@@ -2,21 +2,18 @@
 import FetchHelper from "./fetchHelper.js";
 const latestSection = document.querySelector('#latest')
 const loader = document.querySelector('.spinner')
+const wrapper = document.querySelector('.wrapper')
 const slider = document.querySelector('.slider')
 const next = document.querySelector('.arrow-right')
 const prev = document.querySelector('.arrow-left')
 
 
-let containerDimensions = slider.getBoundingClientRect();
-let containerWidth = containerDimensions.width;
-next.addEventListener('click',()=>{slider.scrollLeft += containerWidth * 1.5})
-prev.addEventListener('click',()=>{slider.scrollLeft -= containerWidth * 1.5})
+
+let containerWidth = wrapper.clientWidth;
+next.addEventListener('click',()=>{slider.scrollLeft += containerWidth * 1})
+prev.addEventListener('click',()=>{slider.scrollLeft -= containerWidth * 1})
 
 let maxPerPage = `&per_page=6`
-let titleAscending = `?orderby=title&order=asc`
-let orderByCategory = `?categories=5`
-
-let dateAscending = `&orderby=date&order=asc`
 let dateDescending = `&orderby=date&order=desc`
 
 async function getData(){

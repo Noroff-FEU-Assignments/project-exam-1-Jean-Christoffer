@@ -2,25 +2,31 @@ import FetchHelper from "./fetchHelper.js";
 
 const loader = document.querySelector('.spinner')
 const postSection = document.querySelector('.post-section')
-const loadMore = document.querySelector('.load-more')
-const loadLess = document.querySelector('.load-less')
 const category = document.querySelector('.category')
-const sortFunction = document.querySelector('.oldest-newest')
+const loadMore = document.querySelector('.load-more')
+let pages = 9
+
+async function getDataID(categoryValue = ''){
+    if (categoryValue === '') return;
+    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+    const categories = await API.get(`?_embed&orderby=date&order=desc`)
+
+    const categoryData = categories.find(item => item._embedded['wp:term'][0][0].name === categoryValue)
+    const categoryId = categoryData._embedded['wp:term'][0][0].id
+
+    return `&categories=${categoryId}`
+  }
 
 
-let count = 100
-let maxPerPage = `&per_page=${count}`
-let titleAscending = `?orderby=title&order=asc`
-let orderByCategory = `?categories=5`
-
-let dateAscending = `&orderby=date&order=asc`
-let dateDescending = `&orderby=date&order=desc`
-
-async function getData(){
-    try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
-        const data = await API.get(`?_embed${maxPerPage}${dateDescending}`)
+ 
+async function getData(categoryValue = ''){
     
+    try{
+
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+        const data = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)
+
+
         return data
 
 
@@ -29,36 +35,13 @@ async function getData(){
     }
 }
 
-loadLess.style.display = 'none'
-loadMore.addEventListener('click',() => {
-    count = 12
-    loadMore.style.display = 'none'
-    loadLess.style.display = 'block'
-    renderPage()
-    
-})
-loadLess.addEventListener('click',()=>{
-    count = 2
-    loadMore.style.display = 'block'
-    loadLess.style.display = 'none'
-    renderPage()
-})
 
 
-
- function renderHTML(data, categoryValue,value){
+ function renderHTML(data){
 
     postSection.textContent = ''
     
     let blogPosts = data
-    const filteredPosts = data.filter((posts) =>
-     posts._embedded['wp:term'][0][0].name.includes(categoryValue))
-
-    if(value === 'select'){
-        blogPosts = filteredPosts
-    }
-
-
 
 
         
@@ -153,39 +136,35 @@ loadLess.addEventListener('click',()=>{
     
 
 }
+//filter
 category.addEventListener('change',()=>{
     
-    renderPage(category.value,'select')
+
+    renderPage(`${category.value || ''}`)
+
+
 })
-sortFunction.addEventListener('change',()=>{
-    if(sortFunction.value === 'old'){
 
-        blogPosts.sort((a,b)=> {
-            const aDate = new Date(a.date)
-            const bDate = new Date(b.date)
-                
-
-           return aDate - bDate
-
-        })
-    }
-    if(sortFunction.value === 'new'){
-
-        blogPosts.sort((a,b)=> {
-            const aDate = new Date(a.date)
-            const bDate = new Date(b.date)
-            
-           return bDate - aDate
-        })
+loadMore.addEventListener('click',()=>{
+ 
+    if(pages <= 9 ){
+        pages += 3
+        loadMore.textContent = 'Show less'
+    }else{
+        pages -=3
+        loadMore.textContent = 'Load more'
     }
     
+    renderPage()
 })
-
-async function renderPage(categoryValue = '', value = ''){
+async function renderPage(categoryValue = ''){
     try{
         loader.classList.add('show')
-        const data = await getData()
-        renderHTML(data,categoryValue,value)
+        
+        const dataID = await getDataID(categoryValue)
+        const data = await getData(dataID) 
+
+        renderHTML(data)
 
     }catch(error){
         console.log(error)
@@ -194,8 +173,5 @@ async function renderPage(categoryValue = '', value = ''){
     }
 }
 
-window.onload = () => {
-    category.value = ''
-    sortFunction.value = 'new'
-}
+
 renderPage()
