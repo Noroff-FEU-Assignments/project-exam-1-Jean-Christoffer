@@ -10,6 +10,7 @@ body {
   box-sizing: border-box;
   font-family: 'Inter Tight', sans-serif;
 
+
 }
 .application{
   min-height: 100vh;
@@ -177,6 +178,7 @@ h1{
 }
 
 /*slider*/
+
   .btn-container{
     display: flex;
     margin-top: auto;
@@ -185,6 +187,7 @@ h1{
   .arrow{
     display: block;
     transform: translateY(-50%);
+    border: none;
     width:2.5rem;
     height: 2,5rem;
     background-color: rgb(43, 40, 40);
@@ -196,6 +199,7 @@ h1{
     user-select: none;
     z-index: 10;
     display: none;
+   
 }
 .arrow:active{
   background-color: #817e7e;
@@ -207,55 +211,77 @@ h1{
 .arrow-left{
   left:0;
 }
+.arrow:disabled{
+  opacity: 0.5;
+  cursor: default;
+}
+.arrow:disabled:active{
+  background-color: rgb(43, 40, 40);
+  color: rgb(255, 255, 255);
+}
+
 .wrapper{
-  overflow: hidden;
-  padding: 20px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .slider{
+  max-width: 1200px;
+  font-size: 0px;
+  gap:20px;
   display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  gap: 2.9rem;
   flex-direction: column;
   align-items: center;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
 }
-.wrapper::-webkit-scrollbar{
-  display: none;
+.wrapper .slider{
+
+  white-space: nowrap;
+  overflow: scroll;
+  margin: 20px auto;
+
+
 }
 
 @media(min-width:52rem){
-  .slider{
-    flex-direction: row;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    gap: 2.9rem;
-  }
-  .wrapper{
-    max-width: 1200px;
-    text-align: left;
-  }
-  .wrapper::-webkit-scrollbar{
-    display: none;
-
-  }
   .arrow{
     display: block;
   }
-}
-/*Blog-cards*/
+  .wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  
+  
+  }
+  .slider{
+    max-width: 1200px;
+    font-size: 0px;
+    display: inline-block;
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    gap:0;
+  }
+  .wrapper .slider{
+  
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 20px auto;
+  
+  
+  }
 
+}
+
+
+/*Blog-cards*/
 .blog-card{
-  position: relative;
-  max-width: 22rem;
   display: flex;
-  flex: 0 0 auto;
-  text-align: left;
   flex-direction: column;
+  font-size: 16px;
+  width: 22rem;
+  margin-left: 0px;
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 0.5em;
@@ -264,6 +290,9 @@ h1{
 
 }
 
+.blog-card:first-child{
+  margin-left: 0px;
+}
 
 
 .blog-card-img-container{
@@ -299,7 +328,8 @@ h1{
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0rem;
+  word-wrap: break-word;
+  white-space: normal;
 
 }
 
@@ -351,12 +381,21 @@ h1{
   font-weight: bold;
 }
 
+@media(min-width:53rem){
+  .blog-card{
+    display: inline-block;
+    width: calc(100% / 3.14);
+    margin-left: 18px;
 
+  }
+}
 /*Home*/
 .latest-container-title{
   display: flex;
   gap:15px;
   align-items: center;
+  justify-content: center;
+
 }
 
 .home-header{
@@ -389,12 +428,15 @@ h1{
   font-size: 1rem;
 }
 .latest-posts{
-  max-width: 1000px;
+  max-width: 1150px;
   margin: 0 auto;
 }
 @media(min-width:52rem){
 
-  
+  .latest-container-title{
+    justify-content: flex-start;
+
+  }
   .hero-text h1{
     font-size: 2.2rem;
     text-underline-offset: 23px;
@@ -471,11 +513,75 @@ footer{
   margin-top: auto;
   background: black;
   color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
+  padding-block: 3rem;
+ 
 }
 
+.socials-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid white;
+  width: min(78rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+.socials-cotnainer{
+  display: flex;
+  gap: 20px;
+  font-size: 1.3rem;
+}
+.footer-form{
+  display: flex;
+  justify-content: center;
+  width: min(78rem, calc(100% - 2rem));
+  align-items: center;
+  margin-inline: auto;
+  padding-bottom: 0.3rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.form .form-field  {	
+		width: 250px;
+		background: #fff;
+		color: black;
+		font: inherit;
+		border: 0;
+		outline: 0;
+		padding: 10px 10px;	
+}
+
+
+.btn {
+	display: inline-block;
+	background: rgb(50, 68, 167);
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 10px;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+	
+}
+.copyright{
+  text-align: center;
+  width: 350px;
+  margin:auto;
+}
+.copyright h1{
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 11px;
+
+}
+@media(min-width:52rem){
+  .footer-form{
+    justify-content: space-between;
+    text-align: left;
+  }
+}
 
 
 /*Loader*/

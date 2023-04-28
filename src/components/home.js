@@ -2,16 +2,10 @@
 import FetchHelper from "./fetchHelper.js";
 const latestSection = document.querySelector('#latest')
 const loader = document.querySelector('.spinner')
-const wrapper = document.querySelector('.wrapper')
-const slider = document.querySelector('.slider')
-const next = document.querySelector('.arrow-right')
-const prev = document.querySelector('.arrow-left')
 
 
 
-let containerWidth = wrapper.clientWidth;
-next.addEventListener('click',()=>{slider.scrollLeft += containerWidth * 1})
-prev.addEventListener('click',()=>{slider.scrollLeft -= containerWidth * 1})
+
 
 let maxPerPage = `&per_page=6`
 let dateDescending = `&orderby=date&order=desc`
@@ -20,7 +14,7 @@ async function getData(){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
         const data = await API.get(`?_embed${maxPerPage}${dateDescending}`)
-        console.log(data)
+     
         return data
 
 
@@ -142,16 +136,49 @@ async function renderPage(){
         console.log(error)
     }finally{
         loader.classList.remove('show')
+        sliderFunction()
     }
 }
 renderPage()
 
 
 
+//Slider 
+const next = document.querySelector('.arrow-right')
+const prev = document.querySelector('.arrow-left')
+const slider = document.querySelector('.slider')
 
+function sliderFunction(){
+    const cards = document.querySelectorAll('.blog-card')
+    const firstCard = cards[0]
 
+    let firstCardWidth = firstCard.clientWidth  + 18
 
+    next.addEventListener('click',()=> {
+        slider.scrollLeft += firstCardWidth
+        pageChecker()
+    })
+    prev.addEventListener('click',()=> {
+        slider.scrollLeft -= firstCardWidth
+        pageChecker()
+    })
 
+}
 
+function pageChecker(){
 
+    let sliderWidth = slider.scrollWidth - slider.clientWidth
 
+    const timeOutPrev = () => {
+        slider.scrollLeft > 0 ? prev.disabled = false : prev.disabled =  true
+    }
+    const timeOutNext = () => {
+        slider.scrollLeft === sliderWidth ? next.disabled = true : next.disabled =  false
+    }
+    console.log(slider.scrollLeft)
+    setTimeout(timeOutPrev,60)
+    setTimeout(timeOutNext,60)
+
+    clearTimeout(timeOutPrev)
+    clearTimeout(timeOutNext)
+}

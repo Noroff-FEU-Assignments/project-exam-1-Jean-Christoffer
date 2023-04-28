@@ -60,17 +60,18 @@
             <h2>The number one electro blog</h2>
           </div>
         </section>
-        <div class="wrapper">
-          <div class="latest-container-title">
-            <h1>Latest posts</h1>
-            <div class="btn-container">
-              <span class="arrow arrow-left"><i class="fa-solid fa-arrow-left"></i></span>
-              <span class="arrow arrow-right"><i class="fa-solid fa-arrow-right"></i></span>
-         
-            </div>
+        <div class="latest-container-title latest-posts">
+          <h1>Latest posts</h1>
+          <div class="btn-container">
+            <button class="arrow arrow-left" disabled="true"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="arrow arrow-right"><i class="fa-solid fa-arrow-right"></i></button>
+       
           </div>
+        </div>
+        <div class="wrapper">
+
           
-          <section class="slider" id="latest">
+          <div class="slider" id="latest">
 
                   <svg
                   class="spinner"
@@ -92,10 +93,38 @@
 
 
 
-        </section>
+        </div>
       </div>
+      <section class="">
+        <h2>10 Years of blogging</h2>
+      </section>
      </main>
-     <footer>i am a footer</footer>
+     <footer>
+      <div class="footer-wrapper">
+        <div class="socials-wrapper">
+          <h1>Wave</h1>
+          <div class="socials-cotnainer">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </div>
+        <form class="footer-form form">
+          <div class="subscribe">
+              <h2>Subscribe to our news letter</h2>
+              <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
+          </div>
+          <div>
+            <input type="email" required placeholder="example@mail.com" class="form-field" />
+            <button class="btn">Subscribe</button>
+          </div>
+        </form>
+        <div class="copyright">
+          <h1>WAVE</h1>
+          <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
+        </div>
+      </div>
+     </footer>
     </div>
 
   </body>
