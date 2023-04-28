@@ -13,7 +13,8 @@ const [blogSection, blogTitle, blog,blogContainer,date,author,form,authorName,co
 async function getData(param){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}/${param}`)
-        const data = await API.get(`?_embed`)
+        const response = await API.get(`?_embed`)
+        const data = await response.json(); 
      
 
         return data

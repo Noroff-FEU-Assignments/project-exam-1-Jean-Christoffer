@@ -4,7 +4,7 @@ export default class FetchHelper {
     }
     async get(endpoint){
         const response = await fetch(this.baseURL + endpoint)
-        return response.json()
+        return response
     }
 
 

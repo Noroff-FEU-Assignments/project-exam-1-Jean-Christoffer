@@ -13,8 +13,8 @@ let dateDescending = `&orderby=date&order=desc`
 async function getData(){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
-        const data = await API.get(`?_embed${maxPerPage}${dateDescending}`)
-     
+        const response = await API.get(`?_embed${maxPerPage}${dateDescending}`)
+        const data = await response.json(); 
         return data
 
 
