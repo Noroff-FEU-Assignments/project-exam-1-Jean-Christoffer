@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
 }
 
 h2,h3{
@@ -228,7 +229,7 @@ h1{
 .slider{
   max-width: 1200px;
   font-size: 0px;
-  gap:20px;
+  gap:30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -242,6 +243,9 @@ h1{
   margin: 20px auto;
 
 
+}
+.slider::-webkit-scrollbar {
+  display: none !important;
 }
 
 @media(min-width:52rem){
@@ -373,7 +377,7 @@ h1{
   text-decoration: underline;
 }
 .subTitle-text{
-  height: 32px;
+  height: 50px;
 }
 .read-more{
   color: black;
@@ -449,6 +453,35 @@ h1{
   }
 
 }
+.excerpt{
+  width: min(78rem, calc(100% - 2rem));
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-around;
+  background-size: 50%;
+  flex-wrap: wrap;
+  background-repeat: no-repeat;
+  align-items: center;
+  padding: 20px;
+
+}
+.expcerpt-img-container{
+  width: 500px;
+  overflow: hidden;
+}
+.expcerpt-img-container img{
+  width: 100%;
+  display: block;
+  border-radius: 3px;
+
+}
+.excerpt-article{
+  max-width: 600px;
+  line-height: 150%;
+}
+.excerpt-article a{
+  margin: 0 auto;
+}
 /*details*/
 .article-header{
   width: 100%;
@@ -487,7 +520,7 @@ h1{
 
 /*Post page*/
 
-.category{
+.category, .sort-date{
   height: 50px;
   padding: 10px 20px;
   background: #fff;
@@ -495,10 +528,10 @@ h1{
   border: 1px solid #ddd;
   border-radius: 3px;
 }
-.category:hover{
+.category:hover, .sort-date:hover{
   border: 1px solid #999;
 }
-.category:focus{
+.category:focus, .sort-date:focus{
   border: 1px solid #999;
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
   outline: none;
@@ -594,6 +627,7 @@ footer{
 		outline: 0;
 		padding: 10px 10px;	
 }
+
 
 
 

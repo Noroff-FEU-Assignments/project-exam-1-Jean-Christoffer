@@ -4,8 +4,11 @@ const loader = document.querySelector('.spinner')
 const postSection = document.querySelector('.post-section')
 const category = document.querySelector('.category')
 const loadMore = document.querySelector('.load-more')
-let pages = 3
+const sortDate  = document.querySelector('.sort-date')
 
+let pages = 9
+let blogPosts = []
+let total = 0
 
 async function getDataID(categoryValue = ''){
     if (categoryValue === '') return;
@@ -24,10 +27,10 @@ async function getData(categoryValue = ''){
         const response  = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)      
         const data = await response.json();
 
-        const totalPosts = response.headers.get('x-wp-total');
+        total = response.headers.get('x-wp-total');
         
         
-        return [data, totalPosts]
+        return [data, total]
     }catch(error){
         console.log(error)
     }
@@ -38,12 +41,12 @@ async function getData(categoryValue = ''){
 
  function renderHTML(data, totalPosts){
 
-    let blogPosts = data
+     blogPosts = data
+
     const total = Number.parseInt(totalPosts,10)
     const postArr = Number.parseInt(data.length,10)
     postSection.textContent = ''
 
-    console.log(total, postArr)
     loadMore.addEventListener('click',  () => {
         if (postArr < total) {
           pages += 3;
@@ -56,7 +59,7 @@ async function getData(categoryValue = ''){
       }else{
         loadMore.style.display = 'block'
       }
-    
+
        
     blogPosts.map( post => {
 
@@ -87,6 +90,9 @@ async function getData(categoryValue = ''){
                 postArticle.textContent = formattedFinal
                 postArticle.className = 'subTitle-text'
 
+      
+                
+
                 titleContainer.append(postTitle,postArticle)
                 articleContainer.append(imgContainer, titleContainer)            
                 postSection.append(articleContainer)
@@ -105,7 +111,19 @@ category.addEventListener('change',()=>{
 
 })
 
+sortDate.addEventListener('change', () => {
+  let sortedValue
 
+  if(sortDate.value === 'oldest'){
+    sortedValue = blogPosts.slice().sort((a, b) =>  new Date(a.date) - new Date(b.date) );
+    
+  }
+  if(sortDate.value === 'newest'){
+    sortedValue= blogPosts.slice().sort((a, b) =>   new Date(b.date) - new Date(a.date) );
+ 
+  }
+  renderHTML(sortedValue,total);
+});
 
 
 async function renderPage(categoryValue = ''){
@@ -123,5 +141,8 @@ async function renderPage(categoryValue = ''){
     }
 }
 
-
+window.addEventListener('load',() => {
+  category.value = ''
+  sortDate.value = 'newest'
+})
 renderPage()
