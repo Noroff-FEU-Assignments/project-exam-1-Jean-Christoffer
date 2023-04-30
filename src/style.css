@@ -8,7 +8,7 @@ html{
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 
 
 }
@@ -21,7 +21,7 @@ body {
 
 h2,h3{
 
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 img{
   width: 100%;
@@ -367,7 +367,7 @@ h1{
  
   cursor: pointer;
   font-size: 1.4rem;
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
   display: block;
   margin-top: 10px;
@@ -483,6 +483,19 @@ h1{
   margin: 0 auto;
 }
 /*details*/
+.comment-field{
+  background: rgb(255, 255, 255);
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.comment-container{
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  width: min(40rem, calc(100% - 2rem));
+  box-shadow: 3px 4px 4px rgb(56, 55, 55);
+  margin-bottom: 10px;
+}
 .article-header{
   width: 100%;
   height: 50vh;
@@ -498,6 +511,7 @@ h1{
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+
 }
 .blog-container{
   position: relative;
@@ -510,7 +524,9 @@ h1{
   font-family: 'Source Sans Pro', sans-serif;
 
 }
-
+form,input, textarea{
+  font-family: 'Source Sans Pro', sans-serif;
+}
 @media(min-width:52rem){
   .blog-container{
     font-size: 20px;
@@ -676,7 +692,58 @@ footer{
   color: black;
 }
 
+/*Forms*/
 
+.comment-form-btn-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.comment-form-btn-container button:active{
+  background: #4285f4;
+  color: white;
+}
+
+.comment-section{
+  width: min(78rem, calc(100% - 2rem));
+  margin: 50px auto;
+}
+.form-wrapper{
+  max-width: 680px;
+  margin: 50px auto;
+}
+.comment-form{
+  
+  width: min(40rem, calc(100% - 2rem));
+
+}
+.input-container{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin-top: 10px;
+
+}
+
+.input-container input, textarea{
+  height: 40px;
+  padding: 10px 20px;
+  background: #fff;
+  transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+textarea{
+  height:150px
+}
+.input-container input:hover, textarea:hover{
+  border: 1px solid #999;
+}
+.input-container input:focus ,textarea:focus{
+  border: 1px solid #999;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  outline: none;
+}
 
 
 /*Loader*/

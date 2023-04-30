@@ -90,17 +90,37 @@
 
 
         </section>
+        <hr>
         <section class="comment-section">
-          <h5>
-            Leave a comment
-          </h5>
 
-        </section>
+          <article class="comment-field">
+            <h2 class="comment-count">Comments (0)</h2>
+          </article>
+        <div class="form-wrapper">
         <form class="comment-form">
-          <input type="text" class="input-field-name" value="jean"/>
-          <input type="text" class="input-field-comment" value="some comment"/>
-          <button>Post comment</button>
+          <legend><h4>
+            Leave a comment
+          </h4></legend>
+            <div class="input-container">
+              <label for="name">Name</label>
+              <input id='name' type="text" class="input-field-name" placeholder="John Cool" required/>
+            </div>
+            <div class="input-container">
+              <label for="email">Email</label>
+              <input id='email' type="email"  class="input-field-email" placeholder="example@mail.com" required />
+            </div>  
+            <div class="input-container">
+              <label for="comment">Comment</label>
+              <textarea id='comment' type="text"  class="input-field-comment"
+                placeholder="Your comment" required ></textarea>
+            </div> 
+            <div class="comment-form-btn-container">
+              <button class="btn comment-btn">Post comment</button>
+            </div>
+            
         </form>
+      </div>
+      </section>
      </main>
      <footer>
       <div class="footer-wrapper">
