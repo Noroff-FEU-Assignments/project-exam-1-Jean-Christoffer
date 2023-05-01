@@ -55,8 +55,35 @@
      <main id="content">
       <section class="contact-section">
         <h1>Contact</h1>
-        <form class="contact-form">
-          
+        <form class="comment-form contact-form">
+          <legend><h4>
+           Contact us
+          </h4></legend>
+            <div class="input-container">
+              <label for="name">Name</label>
+              <input id='name' type="text" class="input-field-name" placeholder="John Cool" required/>
+            </div>
+            <div class="input-container">
+              <label for="email">Email</label>
+              <input id='email' type="email"  class="input-field-email" placeholder="example@mail.com" required />
+            </div>
+            <div class="input-container">
+              <label for="subject">Subject</label>
+              <input id='subject' type="text"  class="input-field-subject" placeholder="subject" required />
+            </div>  
+            <div class="input-container">
+              <label for="question">Question</label>
+              <textarea id='question' type="text"  class="input-field-comment"
+                placeholder="Your question" required ></textarea>
+            </div>
+            <div class="input-container repply-shortly">
+              <small>We will reply shortly</small>
+            </div>  
+        
+            <div class="comment-form-btn-container send-contact">
+              <button class="btn comment-btn">Send</button>
+            </div>
+            
         </form>
       </section>
      </main>

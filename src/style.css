@@ -691,7 +691,58 @@ footer{
   background: rgb(212, 209, 209);
   color: black;
 }
+/*Contact*/
+.contact-section{
+  width: min(78rem, calc(100% - 2rem));
+  margin: 50px auto;
+}
+.contact-section h1{
+  text-align: center;
+}
+.contact-form{
+  margin: 0 auto;
+}
+.repply-shortly{
+  text-align: center;
+}
+.send-contact button{
+  width: 200px;
+}
 
+/*About us*/
+.about-us-section{
+
+  position: relative;
+  min-height: 100vh;
+  background: url('/images/about.jpg') 50% no-repeat; 
+  background-size: cover; 
+  display: flex;
+  flex-direction: column;
+}
+.skewed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transform: skewY(-20deg);
+  transform-origin: top left;
+  background: white;
+  z-index: 0;
+  -webkit-transform: skewY(-20deg);
+  -moz-transform: skewY(-20deg);
+  -ms-transform: skewY(-20deg);
+  -o-transform: skewY(-20deg);
+}
+.about-us-article{
+  max-width: 680px;
+  z-index: 2;
+padding: 20px;
+  line-height: 150%;
+}
 /*Forms*/
 
 .comment-form-btn-container{
