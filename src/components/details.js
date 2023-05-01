@@ -1,4 +1,5 @@
 import FetchHelper from "./fetchHelper.js";
+import showSnackBar from "./snackBar.js";
 const loader = document.querySelector('.spinner')
 
 const queryString = document.location.search;
@@ -17,7 +18,9 @@ const selectors = [
     '.article-header',
     '.input-field-email',
     '.comment-field',
-    '.comment-count'
+    '.comment-count',
+    '.snackbar-wrapper',
+    '.comment-btn'
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
 const [
@@ -33,7 +36,9 @@ const [
     articleHeader,
     email,
     commentField,
-    commentCount
+    commentCount,
+    snackbarWrapper,
+    commentButton
 ] = mapSelect
 
 const months = {
@@ -57,21 +62,43 @@ async function getData(param){
 
 form.addEventListener('submit', async function(e) {
     e.preventDefault()
-    try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
-        const post = await API.post(`comments?post=${id}`,{
-            "post": id,
-            "author_name": `${authorName.value}`,
-            "author_email": `${email.value}`,
-            "content": `${comment.value}`
-        })
-   
+
+    const nameValue = authorName.value.toLowerCase().trim()
+    const emailValue = email.value.toLowerCase().trim()
+    const commentValue = comment.value.toLowerCase().trim()
+
+    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
+    const patternMatches = regEx.test(emailValue);
 
 
-    } catch(error){
-        console.log(error)
+
+    if( nameValue.length > 0 && patternMatches &&  commentValue.length > 0){
+        try{
+            commentButton.disabled = true
+            const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+            const post = await API.post(`comments?post=${id}`,{
+                "post": id,
+                "author_name": `${authorName.value}`,
+                "author_email": `${email.value}`,
+                "content": `${comment.value}`
+            })
+            console.log(post)
+    
+    
+        } catch(error){
+            console.log(error)
+        }finally{
+    
+            commentButton.disabled = false
+            authorName.value = ''
+            email.value = ''
+            comment.value =''
+            showSnackBar(snackbarWrapper)
+    
+        }
+    
     }
-
+    
 })
 
 async function getComments(){
