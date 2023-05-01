@@ -862,7 +862,7 @@ textarea{
 .snackbar-wrapper{
   display: none;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(24, 102, 37, 0.9);
   padding: 15px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
@@ -873,8 +873,8 @@ textarea{
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: top .5s ease-in-out, opacity .7s ease-in-out;
+
+
 
 }
 .snackbar{
@@ -886,8 +886,12 @@ textarea{
 }
 .snackbar-wrapper.show{
   display: block;
-  opacity: 1;
-  z-index: 2000;
+  animation: fadeIn 1s; -webkit-animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /*error*/
