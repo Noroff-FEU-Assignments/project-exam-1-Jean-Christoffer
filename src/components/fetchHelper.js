@@ -11,7 +11,7 @@ export default class FetchHelper {
         const response = await fetch(this.baseURL + endpoint,{
             method:'post',
             headers:{
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
                
             },
             body:JSON.stringify(body)

@@ -48,7 +48,7 @@ function removeErrorMessage(input){
     try{
 
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY3}`)
-        const post = await API.post(`53/feedback`,{
+        const post = await API.post(`53`,{
        
             "your-name": `${nameInput.value}`,
             "your-email": `${mailInput.value}`,
