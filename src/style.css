@@ -774,7 +774,6 @@ textarea{
   transform-origin: center;
   animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
-
 @keyframes colors {
   0% {
     stroke: #4285f4;
