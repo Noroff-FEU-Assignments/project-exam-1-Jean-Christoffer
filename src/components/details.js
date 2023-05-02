@@ -93,7 +93,7 @@ form.addEventListener('submit', async function(e) {
             authorName.value = ''
             email.value = ''
             comment.value =''
-            showSnackBar(snackbarWrapper)
+            showSnackBar(snackbarWrapper, 'Success! comment pending approval')
     
         }
     

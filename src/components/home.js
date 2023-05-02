@@ -152,14 +152,14 @@ function sliderFunction(){
     const cards = document.querySelectorAll('.blog-card')
     const firstCard = cards[0]
 
-    let firstCardWidth = firstCard.clientWidth  + 18
+    let firstCardWidth = firstCard.clientWidth  + 14
 
     next.addEventListener('click',()=> {
         slider.scrollLeft += firstCardWidth
         pageChecker()
     })
     prev.addEventListener('click',()=> {
-        slider.scrollLeft -= firstCardWidth
+        slider.scrollLeft -= firstCardWidth 
         pageChecker()
     })
 

@@ -26,7 +26,7 @@ contactForm.addEventListener('submit', async function(e) {
         mailInput.value = ''
         subjectInput.value = ''
         question.value = ''
-        showSnackBar(snackbarWrapper)
+        showSnackBar(snackbarWrapper, 'Message sendt! we will reply shortly')
         postDetails()
       }
     
@@ -47,12 +47,13 @@ function removeErrorMessage(input){
   async function postDetails(){
     try{
 
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
-        const post = await API.post(`posts`,{
-            "post": '',
-            "author_name": `${nameInput.value}`,
-            "author_email": `${mailInput.value}`,
-            "content": `Subject${subjectInput.value} Question:${question.value}`
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY3}`)
+        const post = await API.post(`53/feedback`,{
+       
+            "your-name": `${nameInput.value}`,
+            "your-email": `${mailInput.value}`,
+            "your-subject":`${subjectInput.value}`,
+            "optional-message": `${question.value}`
         })
         console.log(post)
 

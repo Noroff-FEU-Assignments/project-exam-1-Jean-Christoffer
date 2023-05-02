@@ -12,6 +12,7 @@ export default class FetchHelper {
             method:'post',
             headers:{
                 'Content-Type': 'application/json',
+               
             },
             body:JSON.stringify(body)
         })

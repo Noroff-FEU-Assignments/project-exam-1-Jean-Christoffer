@@ -19,13 +19,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="src/components/hamburger.js" type="module" defer></script>
     <script src="src/components/contact.js" type="module" defer ></script>
-   
+    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script> 
     
 
     <title>WAVE</title>
   </head>
   <body>
-    <div id="app" class="application">
+
       <header class="flex">
         <div class="hamburger" aria-controls="nav" aria-expanded="false" role="navigation">
             <span class="line top"></span>
@@ -59,27 +59,27 @@
           <legend><h4>
            Contact us
           </h4></legend>
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="name">Name</label>
               <input id='name' type="text" class="input-field-name" placeholder="John Cool" required/>
               <small class="error"></small>
             </div>
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="email">Email</label>
               <input id='email' type="email"  class="input-field-email" placeholder="example@mail.com" required />
               <small class="error"></small>
             </div>
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="subject">Subject</label>
               <input id='subject' type="text"  class="input-field-subject" placeholder="subject" required />
               <small class="error"></small>
             </div>  
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="question">Question</label>
               <textarea id='question' type="text"  class="input-field-comment"
                 placeholder="Your question" required ></textarea>
             </div>
-            <div class="input-container repply-shortly">
+            <div class="input-container repply-shortly flex">
               <small>We will reply shortly</small>
             </div>  
         
@@ -89,24 +89,24 @@
             
         </form>
         <div class="snackbar-wrapper">
-          <div class="snackbar">
+          <div class="snackbar flex">
             
-            <p class="snab">success! comment will appear when approved</p>
+            <p class="snab"></p>
           </div>
         </div>
       </section>
      </main>
      <footer>
       <div class="footer-wrapper">
-        <div class="socials-wrapper">
+        <div class="socials-wrapper flex">
           <h1>Wave</h1>
-          <div class="socials-cotnainer">
+          <div class="socials-cotnainer flex">
             <i class="fa-brands fa-instagram"></i>
             <i class="fa-brands fa-facebook-f"></i>
             <i class="fa-brands fa-twitter"></i>
           </div>
         </div>
-        <form class="footer-form form">
+        <form class="footer-form form flex">
           <div class="subscribe">
               <h2>Subscribe to our news letter</h2>
               <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
@@ -122,7 +122,7 @@
         </div>
       </div>
      </footer>
-    </div>
+
 
   </body>
 </html>

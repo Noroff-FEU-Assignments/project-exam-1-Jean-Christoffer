@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
-         
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script> 
     <script src="src/components/hamburger.js" type="module" defer></script>
     
     <script src="src/components/details.js" type="module" defer></script>
@@ -29,7 +29,7 @@
     <title>WAVE</title>
   </head>
   <body>
-    <div id="app" class="application">
+
       <header class="flex">
         <div class="hamburger" aria-controls="nav" aria-expanded="false" role="navigation">
             <span class="line top"></span>
@@ -64,7 +64,7 @@
           
             <article class="blog-container">
               <h2 class="blog-title"></h2>
-              <div class="user-info">
+              <div class="user-info flex">
                 <small class="date"></small>
                 <small class="author"></small>
               </div>
@@ -101,45 +101,45 @@
           <legend><h4>
             Leave a comment
           </h4></legend>
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="name">Name</label>
               <input id='name' type="text" class="input-field-name" placeholder="John Cool" required/>
-              <p>hello</p>
+    
             </div>
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="email">Email</label>
               <input id='email' type="email"  class="input-field-email" placeholder="example@mail.com" required />
             </div>  
-            <div class="input-container">
+            <div class="input-container flex">
               <label for="comment">Comment</label>
               <textarea id='comment' type="text"  class="input-field-comment"
                 placeholder="Your comment" required ></textarea>
             </div> 
-            <div class="comment-form-btn-container">
+            <div class="comment-form-btn-container flex">
               <button class="btn comment-btn">Post comment</button>
             </div>
             
         </form>
       </div>
       <div class="snackbar-wrapper">
-        <div class="snackbar">
+        <div class="snackbar flex">
           
-          <p class="snab">success! comment will appear when approved</p>
+          <p class="snab"></p>
         </div>
       </div>
       </section>
      </main>
      <footer>
       <div class="footer-wrapper">
-        <div class="socials-wrapper">
+        <div class="socials-wrapper flex">
           <h1>Wave</h1>
-          <div class="socials-cotnainer">
+          <div class="socials-cotnainer flex">
             <i class="fa-brands fa-instagram"></i>
             <i class="fa-brands fa-facebook-f"></i>
             <i class="fa-brands fa-twitter"></i>
           </div>
         </div>
-        <form class="footer-form form">
+        <form class="footer-form form flex">
           <div class="subscribe">
               <h2>Subscribe to our news letter</h2>
               <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
@@ -155,7 +155,7 @@
         </div>
       </div>
      </footer>
-    </div>
+
 
   </body>
 </html>
