@@ -44,7 +44,13 @@ body {
 h1,.title-site {
   font-family: var(--heading-font);
   font-size: 2rem;
+}
+fieldset{
+  border: none;
+}
 
+input,textarea{
+  font-family: var(--primary-font);
 }
 .title-site{
   font-size: 1.7rem;
