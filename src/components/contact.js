@@ -1,4 +1,5 @@
 import showSnackBar from "./snackBar.js";
+import FetchHelper from "./fetchHelper.js";
 const nameInput = document.querySelector('#name')
 const mailInput = document.querySelector('#email')
 const subjectInput = document.querySelector('#subject')
@@ -26,6 +27,7 @@ contactForm.addEventListener('submit', async function(e) {
         subjectInput.value = ''
         question.value = ''
         showSnackBar(snackbarWrapper)
+        postDetails()
       }
     
 })
@@ -42,3 +44,21 @@ function removeErrorMessage(input){
     let error = input.parentElement.children[2]
     error.classList.remove('show')
   } 
+  async function postDetails(){
+    try{
+
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+        const post = await API.post(`posts`,{
+            "post": '',
+            "author_name": `${nameInput.value}`,
+            "author_email": `${mailInput.value}`,
+            "content": `Subject${subjectInput.value} Question:${question.value}`
+        })
+        console.log(post)
+
+
+    } catch(error){
+        console.log(error)
+    }
+
+}

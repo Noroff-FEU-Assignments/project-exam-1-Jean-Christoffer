@@ -6,6 +6,9 @@ const category = document.querySelector('.category')
 const loadMore = document.querySelector('.load-more')
 const sortDate  = document.querySelector('.sort-date')
 
+const searchForm = document.querySelector('.search-form')
+const searchInput = document.querySelector('#search')
+
 let pages = 9
 let blogPosts = []
 let total = 0
@@ -21,15 +24,17 @@ async function getDataID(categoryValue = ''){
     return `&categories=${categoryId}`
   }
 
-async function getData(categoryValue = ''){
+async function getData(categoryValue = '', searchQuery =''){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
-        const response  = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)      
+        let response
+        if(searchQuery !== ''){
+          response  = await API.get(`?_embed&search=${searchQuery}`)
+        }else{
+          response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)       
+        }       
         const data = await response.json();
-
         total = response.headers.get('x-wp-total');
-        
-        
         return [data, total]
     }catch(error){
         console.log(error)
@@ -90,9 +95,6 @@ async function getData(categoryValue = ''){
                 postArticle.textContent = formattedFinal
                 postArticle.className = 'subTitle-text'
 
-      
-                
-
                 titleContainer.append(postTitle,postArticle)
                 articleContainer.append(imgContainer, titleContainer)            
                 postSection.append(articleContainer)
@@ -106,7 +108,7 @@ async function getData(categoryValue = ''){
 category.addEventListener('change',()=>{
     
 
-    renderPage(`${category.value || ''}`)
+    renderPage(`${category.value || ''}`,'')
 
 
 })
@@ -122,16 +124,29 @@ sortDate.addEventListener('change', () => {
     sortedValue= blogPosts.slice().sort((a, b) =>   new Date(b.date) - new Date(a.date) );
  
   }
-  renderHTML(sortedValue,total);
+  renderHTML(sortedValue,'');
 });
 
 
-async function renderPage(categoryValue = ''){
+//search
+searchForm.addEventListener('submit',(e)=>{
+  e.preventDefault()
+  search(searchInput.value)
+})
+function search(cleaner){
+    const trimmed = cleaner.trim()
+    const urlConvert = encodeURIComponent(trimmed);
+    renderPage('',urlConvert)
+}
+
+
+
+async function renderPage(categoryValue = '', searchQuery = ''){
     try{
         loader.classList.add('show')
         
         const dataID = await getDataID(categoryValue)
-        const [data, totalPosts ]= await getData(dataID) 
+        const [data, totalPosts ]= await getData(dataID ,searchQuery) 
         renderHTML(data,totalPosts)
 
     }catch(error){
