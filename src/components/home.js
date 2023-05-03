@@ -150,35 +150,39 @@ const slider = document.querySelector('.slider')
 
 function sliderFunction(){
     const cards = document.querySelectorAll('.blog-card')
-    const firstCard = cards[0]
+    const firstCard = cards[2]
 
-    let firstCardWidth = firstCard.clientWidth  + 14
+    let firstCardWidth = firstCard.clientWidth  * 5
 
     next.addEventListener('click',()=> {
         slider.scrollLeft += firstCardWidth
-        pageChecker()
+
     })
     prev.addEventListener('click',()=> {
         slider.scrollLeft -= firstCardWidth 
-        pageChecker()
+   
     })
 
 }
 
-function pageChecker(){
 
-    let sliderWidth = slider.scrollWidth - slider.clientWidth
 
-    const timeOutPrev = () => {
-        slider.scrollLeft > 0 ? prev.disabled = false : prev.disabled =  true
-    }
-    const timeOutNext = () => {
-        slider.scrollLeft === sliderWidth ? next.disabled = true : next.disabled =  false
-    }
-    console.log(slider.scrollLeft)
-    setTimeout(timeOutPrev,60)
-    setTimeout(timeOutNext,60)
 
-    clearTimeout(timeOutPrev)
-    clearTimeout(timeOutNext)
-}
+const buttons = document.querySelectorAll('[data-carousel-button]')
+console.log(buttons)
+
+buttons.forEach(button => {
+    button.addEventListener('click',()=>{
+        const offset = button.dataset.carouselButton === 'next' ? 1 : -1
+        const slides = button.closest('[data-carousel]').querySelector('[data-slides]')
+
+        const activeSlide = slides.querySelector('[data-active]')
+        let newIndex  = [...slides.children].indexOf(activeSlide) + offset
+
+        if(newIndex < 0) newIndex = slides.children.length - 1  
+        if(newIndex >= slides.children.length) newIndex = 0
+
+        slides.children[newIndex].dataset.active = true
+        delete activeSlide.dataset.active
+    })
+})
