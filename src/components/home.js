@@ -23,8 +23,6 @@ async function getData(){
     }
 }
 
-
-
 async function renderHTML(data){
 
         // Hero section
@@ -121,9 +119,6 @@ async function renderHTML(data){
         }catch(error){
             console.log(error)
         }
-
-    
-
 }
 
 async function renderPage(){
@@ -136,53 +131,48 @@ async function renderPage(){
         console.log(error)
     }finally{
         loader.classList.remove('show')
-        sliderFunction()
+
     }
 }
 renderPage()
 
-
-
 //Slider 
-const next = document.querySelector('.arrow-right')
-const prev = document.querySelector('.arrow-left')
+const topSlider = document.querySelectorAll('.arrow')
 const slider = document.querySelector('.slider')
+topSlider.forEach(button => {
 
-function sliderFunction(){
-    const cards = document.querySelectorAll('.blog-card')
-    const firstCard = cards[2]
+    button.addEventListener('click',()=>{
+        const cards = document.querySelector('.blog-card')
+        let width = cards.clientWidth  * 5
 
-    let firstCardWidth = firstCard.clientWidth  * 5
+        if (button.className.includes('arrow-right')){
+            slider.scrollLeft += width
+            
 
-    next.addEventListener('click',()=> {
-        slider.scrollLeft += firstCardWidth
-
+        }
+        if(button.className.includes('arrow-left')){
+            slider.scrollLeft -= width
+           
+        }
     })
-    prev.addEventListener('click',()=> {
-        slider.scrollLeft -= firstCardWidth 
-   
-    })
+})
 
-}
-
-
-
-
-const buttons = document.querySelectorAll('[data-carousel-button]')
-console.log(buttons)
-
+const buttons = document.querySelectorAll('.img-slider-button')
 buttons.forEach(button => {
     button.addEventListener('click',()=>{
-        const offset = button.dataset.carouselButton === 'next' ? 1 : -1
-        const slides = button.closest('[data-carousel]').querySelector('[data-slides]')
+        const findNext = button.className.includes('next') ? 1 : -1
+        const slides = button.closest('#img-carousel').querySelector('#slides')
+        const activeSlide = slides.querySelector('.active-slide')
 
-        const activeSlide = slides.querySelector('[data-active]')
-        let newIndex  = [...slides.children].indexOf(activeSlide) + offset
-
+        let newIndex  = [...slides.children].indexOf(activeSlide) + findNext
+  
         if(newIndex < 0) newIndex = slides.children.length - 1  
         if(newIndex >= slides.children.length) newIndex = 0
 
-        slides.children[newIndex].dataset.active = true
-        delete activeSlide.dataset.active
+        slides.children[newIndex].classList.add('active-slide')
+   
+        activeSlide.classList.remove('active-slide')
     })
 })
+
+

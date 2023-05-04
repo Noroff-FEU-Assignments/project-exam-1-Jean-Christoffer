@@ -194,7 +194,7 @@ header, .nav{
     margin-top: auto;
     gap:10px;
   }
-  .arrow{
+  .arrow {
     display: block;
     transform: translateY(-50%);
     border: none;
@@ -244,30 +244,27 @@ header, .nav{
   overflow: scroll;
   margin: 20px auto;
 }
-.slider::-webkit-scrollbar {
-  display: none !important;
-}
 
 @media(min-width:52rem){
   .arrow{
     display: block;
   }
   .wrapper{
-    
     justify-content: center;
     flex-direction: row;
   }
   .slider{
-    max-width: var(--max-size);
+    max-width:var(--max-size);
     font-size: 0px;
     display: inline-block;
     scroll-behavior: smooth;
     scroll-snap-type: mandatory;
     gap:0;
+    overflow-x: scroll;
+    scrollbar-width: none;
   }
   .wrapper .slider{
     white-space: nowrap;
-    overflow: hidden;
     margin: 20px auto;
   }
 }
@@ -287,14 +284,10 @@ header, .nav{
   background: linear-gradient(to right, var(--white), var(--card-white2));
 
 }
-.blog-card:first-child{
-  margin-left: 0px;
-}
 .blog-card-img-container{
   max-width: 100%;
 }
 
-/*Categories*/
 .AI{
   background: var(--categories-blue1);
   background: linear-gradient(to bottom, var(--categories-blue2), var(--categories-blue3));
@@ -322,6 +315,7 @@ header, .nav{
   flex-direction: column;
   word-wrap: break-word;
   white-space: normal;
+
   
 }
 .card-body h4{
@@ -361,6 +355,16 @@ header, .nav{
   color: var(--black);
   text-decoration: underline;
   font-weight: bold;
+}
+@media(min-width:53rem){
+  .blog-card{
+    display: inline-block;
+    width: calc(100%  / 3.08) ;
+    margin-left: 14px;
+  }
+  .blog-card:nth-child(2) {
+    margin-left: 0px !important;
+  }
 }
 
 /*Home*/
@@ -424,6 +428,7 @@ header, .nav{
   background-repeat: no-repeat;
   align-items: center;
   padding: 20px;
+  text-align: center;
 
 
 }
@@ -440,13 +445,6 @@ header, .nav{
 }
 .excerpt-article a{
   margin: 0 auto;
-}
-@media(min-width:53rem){
-  .blog-card{
-    display: inline-block;
-    width: calc(100% / 3 - 1rem);
-    margin-left: 15px;
-  }
 }
 
 /*details*/
@@ -492,6 +490,9 @@ header, .nav{
   .blog-container{
     font-size: 20px;
     line-height: 32px;
+  }
+  .excerpt{
+    text-align: left;
   }
 }
 /*Post page*/
@@ -608,8 +609,6 @@ footer{
 }
 
 
-
-
 .copyright{
   text-align: center;
   width: 350px;
@@ -675,35 +674,30 @@ footer{
 /*About us*/
 .about-us-section{
   position: relative;
-  min-height: 100vh;
-  background: url('/images/about.jpg') 50% no-repeat; 
-  background-size: cover; 
   flex-direction: column;
+  align-items: center;
+
+  
 }
-.skewed {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  transform: skewY(-20deg);
-  transform-origin: top left;
-  background: white;
-  z-index: 0;
-  -webkit-transform: skewY(-20deg);
-  -moz-transform: skewY(-20deg);
-  -ms-transform: skewY(-20deg);
-  -o-transform: skewY(-20deg);
-}
+
 .about-us-article{
   max-width: var(--article-size-large);
   z-index: 2;
   padding: 20px;
   line-height: 150%;
 }
+.divider-img{
+  display: block;
+  margin: 0;
+  background: transparent;
+  max-width: 100%;
+  max-height: 100%;
+  background: url(no-dimensions-or-ratio.svg);
+  background-size: contain;
+  
+
+}
+
 
 /*Forms*/
 .comment-form-btn-container{
@@ -865,34 +859,43 @@ textarea{
   border-radius: 5px;
   overflow: hidden;
 }
-.slide[data-active]{
+.slide.active-slide{
   opacity: 1;
   z-index: 1;
   transition-delay: 0ms;
 }
 
-.slide > img{
+.slide  img{
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-.test-arrow{
+.img-slider-button{
   position: absolute;
   top:50%;
   z-index: 100;
-  font-size: 2rem;
+  font-size: 1.5rem;
   transform: translateY(-50%);
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: rgb(27, 27, 27);
+  padding: 5px;
 }
-.image-carousel > ul{
+.image-carousel  ul{
   margin: 0;
   padding: 0;
   margin: 0;
 }
-.test-left{
+.left{
   right:1rem;
 }
-.test-right{
+.right{
   left:1rem;
+}
+.img-slider-button:active{
+  background-color: #817e7e;
+  color: var(--black);
 }
