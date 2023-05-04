@@ -143,16 +143,17 @@ topSlider.forEach(button => {
 
     button.addEventListener('click',()=>{
         const cards = document.querySelector('.blog-card')
-        let width = cards.clientWidth  * 5
+        let width = cards.clientWidth + 14 //adding 14 because of card margin
+   
 
         if (button.className.includes('arrow-right')){
             slider.scrollLeft += width
-            
+          
 
         }
         if(button.className.includes('arrow-left')){
             slider.scrollLeft -= width
-           
+  
         }
     })
 })
