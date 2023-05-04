@@ -131,49 +131,85 @@ async function renderPage(){
         console.log(error)
     }finally{
         loader.classList.remove('show')
+        sliderFunction()
+
+
 
     }
 }
 renderPage()
 
 //Slider 
-const topSlider = document.querySelectorAll('.arrow')
-const slider = document.querySelector('.slider')
-topSlider.forEach(button => {
 
-    button.addEventListener('click',()=>{
-        const cards = document.querySelector('.blog-card')
-        let width = cards.clientWidth + 14 //adding 14 because of card margin
-   
 
-        if (button.className.includes('arrow-right')){
-            slider.scrollLeft += width
-          
 
-        }
-        if(button.className.includes('arrow-left')){
-            slider.scrollLeft -= width
+function sliderFunction(){
+    const topSlider = document.querySelectorAll('.arrow')
+    const slider = document.querySelector('.slider')
+    const allCards = document.querySelectorAll('.blog-card')
+    let cardIndex = 2;
+    const maxIndex = allCards.length - 3;
   
-        }
-    })
-})
+    topSlider.forEach( button => {
 
-const buttons = document.querySelectorAll('.img-slider-button')
+        button.addEventListener('click',(e)=>{    
+            const card = document.querySelector('.blog-card') 
+            let width = card.clientWidth * 5 
+            if(button.className.includes('arrow-right')){                
+                if (cardIndex < maxIndex) {
+                    slider.scrollLeft += width;
+                    cardIndex++;              
+                  }      
+            }
+    
+            if(button.className.includes('arrow-left')){
+                slider.scrollLeft -= width
+                cardIndex--;
+        
+            }
+            buttonChecker(maxIndex,cardIndex)
+            console.log(cardIndex)
+        })
+
+    })
+
+    return [maxIndex, cardIndex]
+}
+function buttonChecker(maxIndex = 3,cardIndex = 1){
+    const nextButton = document.querySelector('.arrow-right');
+    if (cardIndex === maxIndex) {
+      nextButton.setAttribute('disabled', true);
+    } else {
+      nextButton.removeAttribute('disabled');
+    }
+
+    const prevButton = document.querySelector('.arrow-left');
+    if (cardIndex < maxIndex) {
+        prevButton.setAttribute('disabled', true);
+    } else {
+        prevButton.removeAttribute('disabled');
+    }
+}
+buttonChecker()
+
+
+const buttons = document.querySelectorAll('.img-slider-button');
+const slides = document.querySelector('#slides');
+
 buttons.forEach(button => {
-    button.addEventListener('click',()=>{
-        const findNext = button.className.includes('next') ? 1 : -1
-        const slides = button.closest('#img-carousel').querySelector('#slides')
-        const activeSlide = slides.querySelector('.active-slide')
+  button.addEventListener('click', () => {
+    const findNext = button.classList.contains('next') ? 1 : -1;
+    const activeSlide = slides.querySelector('.active-slide');
+    let newIndex = Array.from(slides.children).indexOf(activeSlide) + findNext;
 
-        let newIndex  = [...slides.children].indexOf(activeSlide) + findNext
-  
-        if(newIndex < 0) newIndex = slides.children.length - 1  
-        if(newIndex >= slides.children.length) newIndex = 0
+    if (newIndex < 0) {
+      newIndex = slides.children.length - 1;
+    } else if (newIndex >= slides.children.length) {
+      newIndex = 0;
+    }
 
-        slides.children[newIndex].classList.add('active-slide')
-   
-        activeSlide.classList.remove('active-slide')
-    })
-})
-
+    activeSlide.classList.remove('active-slide');
+    slides.children[newIndex].classList.add('active-slide');
+  });
+});
 
