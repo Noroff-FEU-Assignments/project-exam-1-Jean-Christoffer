@@ -487,7 +487,7 @@ header, .nav{
 .comment-container{
   background: rgb(255, 255, 255);
   padding: 20px;
-  width: var(--article-size-medium);
+  max-width: var(--article-size-medium);
   box-shadow: 3px 4px 4px rgb(56, 55, 55);
   margin-bottom: 10px;
 }
