@@ -12,8 +12,8 @@ const searchInput = document.querySelector('#search')
 let pages = 9
 let blogPosts = []
 let total = 0
-
-async function getDataID(categoryValue = ''){
+let categoriesArr = []
+/*async function getDataID(categoryValue = ''){
     if (categoryValue === '') return;
     const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
     const response = await API.get(`?_embed&orderby=date&order=desc`)
@@ -22,7 +22,19 @@ async function getDataID(categoryValue = ''){
     const categoryId = categoryData._embedded['wp:term'][0][0].id
 
     return `&categories=${categoryId}`
+  }*/
+
+
+
+  async function getCategory(){
+    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+    const response = await API.get(`categories`)
+    const categories = await response.json()
+    categoriesArr.push(...categories)
+    return categoriesArr
   }
+
+  getCategory()
 
 async function getData(categoryValue = '', searchQuery =''){
     try{
@@ -30,8 +42,10 @@ async function getData(categoryValue = '', searchQuery =''){
         let response
         if(searchQuery !== ''){
           response  = await API.get(`?_embed&search=${searchQuery}`)
-        }else{
-          response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)       
+        }
+        else {
+          response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`) 
+          console.log(categoryValue)      
         }       
         const data = await response.json();
         total = response.headers.get('x-wp-total');
@@ -40,9 +54,6 @@ async function getData(categoryValue = '', searchQuery =''){
         console.log(error)
     }
 }
-
-
-
 
  function renderHTML(data, totalPosts){
 
@@ -106,11 +117,8 @@ async function getData(categoryValue = '', searchQuery =''){
 }
 //filter
 category.addEventListener('change',()=>{
-    
-
-    renderPage(`${category.value || ''}`,'')
-
-
+    let found = categoriesArr.find(item => item.name === category.value)
+    found ? renderPage(`&categories=${found.id || ''}`,'') : renderPage('','')
 })
 
 sortDate.addEventListener('change', () => {
@@ -144,9 +152,10 @@ function search(cleaner){
 async function renderPage(categoryValue = '', searchQuery = ''){
     try{
         loader.classList.add('show')
+        console.log(categoryValue)
         
-        const dataID = await getDataID(categoryValue)
-        const [data, totalPosts ]= await getData(dataID ,searchQuery) 
+        //const dataID = await getDataID(categoryValue)
+        const [data, totalPosts ]= await getData(categoryValue,searchQuery) 
         renderHTML(data,totalPosts)
 
     }catch(error){
