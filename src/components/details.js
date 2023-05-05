@@ -101,7 +101,7 @@ form.addEventListener('submit', async function(e) {
     
 })
 
-/*async function getComments(){
+async function getComments(){
     try{
         const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
         const response = await API.get(`comments?post=${id}`)
@@ -113,14 +113,14 @@ form.addEventListener('submit', async function(e) {
     } catch(error){
         console.log(error)
     }
-}*/
+}
 
-function renderHtml(data){
+function renderHtml(data,comments = ''){
 
     const formatedText = data.content.rendered
     const parser = new DOMParser();
     const nodes = parser.parseFromString(formatedText, 'text/html').body.childNodes
-    const comments = data._embedded.replies[0]
+
     
         nodes.forEach(element => {
             const paragraph = document.createElement('p')
@@ -189,8 +189,8 @@ async function renderPage(){
     try{
         loader.classList.add('show')
         const data = await getData(id)
-        //const comments = await getComments()
-        renderHtml(data)
+        const comments = await getComments()
+        renderHtml(data,comments)
     }catch(error){
         console.log(error)
     }finally{
