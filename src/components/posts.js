@@ -13,18 +13,6 @@ let pages = 9
 let blogPosts = []
 let total = 0
 let categoriesArr = []
-/*async function getDataID(categoryValue = ''){
-    if (categoryValue === '') return;
-    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
-    const response = await API.get(`?_embed&orderby=date&order=desc`)
-    const categories = await response.json()
-    const categoryData = categories.find(item => item._embedded['wp:term'][0][0].name === categoryValue)
-    const categoryId = categoryData._embedded['wp:term'][0][0].id
-
-    return `&categories=${categoryId}`
-  }*/
-
-
 
   async function getCategory(){
     const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
@@ -44,8 +32,7 @@ async function getData(categoryValue = '', searchQuery =''){
           response  = await API.get(`?_embed&search=${searchQuery}`)
         }
         else {
-          response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`) 
-          console.log(categoryValue)      
+          response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&per_page=${pages}`)    
         }       
         const data = await response.json();
         total = response.headers.get('x-wp-total');
@@ -109,10 +96,7 @@ async function getData(categoryValue = '', searchQuery =''){
                 titleContainer.append(postTitle,postArticle)
                 articleContainer.append(imgContainer, titleContainer)            
                 postSection.append(articleContainer)
-            });   
-        
-
-    
+            });       
 
 }
 //filter
@@ -153,8 +137,7 @@ async function renderPage(categoryValue = '', searchQuery = ''){
     try{
         loader.classList.add('show')
         console.log(categoryValue)
-        
-        //const dataID = await getDataID(categoryValue)
+
         const [data, totalPosts ]= await getData(categoryValue,searchQuery) 
         renderHTML(data,totalPosts)
 
