@@ -136,7 +136,7 @@ header, .nav{
       height: 3px;
       background: var(--white);
       display: block;
-      margin: 5px;
+      margin: 5px 0;
       position: relative;
 }
   .hamburger{
