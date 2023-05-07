@@ -128,6 +128,7 @@ header, .nav{
       align-items: center;
       z-index: 0;     
 }
+
   /*Hamburger Menu*/
 
   .line{
@@ -690,6 +691,13 @@ footer{
   color: black;
 }
 /*Contact*/
+.error-message{
+  color: red;
+  display: none;
+}
+.error-message.show{
+  display: block;
+}
 .content-wrapper{
   background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
 }
@@ -1032,6 +1040,8 @@ textarea{
   position: absolute;
   top: 50vh;
   left: 50%;
+  max-width: 100%;
+  text-align: center;
   transform: translate(-50%, -50%);
 }
 .snackbar{
@@ -1059,5 +1069,29 @@ textarea{
   display: block;
 }
 
+/*Modal*/
 
+.article-header{
+  cursor: pointer;
+}
+dialog{
+  max-width: 900px;
+  border: none;
+  background: none;
+}
+dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.5); 
 
+  cursor: pointer;
+}
+.modal{
+  position: relative;
+}
+.modal button{
+  position: absolute;
+  top:1rem;
+  right:1rem;
+  font-size: 1rem;
+
+  
+}
