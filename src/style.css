@@ -1095,3 +1095,25 @@ dialog::backdrop{
 
   
 }
+
+/*overlay-body*/
+.overlay{
+  background: black;
+  opacity: 0.6;
+  position: fixed;
+  display: none;
+  transition: .3s ease;
+  z-index: 0;
+}
+.overlay.active{
+  display: block;
+  pointer-events: all;
+  transition-delay: 0s;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+body.stop-scrolling{
+  overflow-y: hidden;
+}

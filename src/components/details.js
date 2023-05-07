@@ -197,10 +197,14 @@ function renderHtml(data,comments = ''){
 articleHeader.addEventListener('click',()=>{
     modal.showModal()
     console.log(dialog.nextSibling)
+    const body = document.querySelector('body')
+    body.classList.add('stop-scrolling')
 })
 
 modalBtn.addEventListener('click',()=> {
     modal.close()
+    const body = document.querySelector('body')
+    body.classList.remove('stop-scrolling')
 })
 
 const dialog = document.querySelector('dialog');
@@ -209,6 +213,8 @@ dialog.addEventListener("click", (event) => {
     if (event.target === dialog) {
    
       dialog.close();
+      const body = document.querySelector('body')
+      body.classList.remove('stop-scrolling')
     }
   });
   
