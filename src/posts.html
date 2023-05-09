@@ -25,6 +25,9 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,7 +73,7 @@
       <nav id="nav">
         <ul class="nav flex">
           <li><a href="index.html">Home</a></li>
-          <li><a href="posts.html">Posts</a></li>
+          <li><a href="posts.html" class="active-page">Posts</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
@@ -124,7 +127,9 @@
         <div class="load-more-container">
           <button class="load-more btn">Show more</button>
         </div>
+        
       </section>
+
     </main>
     <footer>
       <div class="footer-wrapper">
@@ -138,25 +143,33 @@
         </div>
         <form class="footer-form form flex">
           <div class="subscribe">
-            <h2>Subscribe to our news letter</h2>
+            <h2 id="subscribe-heading">Subscribe to our newsletter</h2>
             <p>
-              Subsribe to stay updated with our latest blog posts and happenings
-              in the electronic music scene
+              Stay updated with our latest blog posts and happenings in the electronic music scene
             </p>
           </div>
           <div>
+            <label for="email-input" class="sr-only">Email address</label>
             <input
+              id="email-input"
               type="email"
               required
               placeholder="example@mail.com"
               class="form-field"
             />
-            <button class="btn subscribe-btn">Subscribe</button>
+            <span class="error-message"></span>
+            <button type="submit" class="btn subscribe-btn">Subscribe</button>
           </div>
         </form>
         <div class="copyright">
           <h1>WAVE</h1>
           <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
+        </div>
+      </div>
+      <div class="snackbar-wrapper snackbar-wrapper-footer">
+        <div class="snackbar flex">
+
+          <p class="snab"></p>
         </div>
       </div>
     </footer>

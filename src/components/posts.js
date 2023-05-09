@@ -46,6 +46,7 @@ async function getData(categoryValue = '', searchQuery =''){
 
      blogPosts = data
 
+
     const total = Number.parseInt(totalPosts,10)
     const postArr = Number.parseInt(data.length,10)
     postSection.textContent = ''
@@ -63,6 +64,12 @@ async function getData(categoryValue = '', searchQuery =''){
         loadMore.style.display = 'block'
       }
 
+      if(blogPosts.length === 0){
+        const noResults = document.createElement('h2')
+        noResults.textContent = `No results matching "${searchInput.value}" found`
+        noResults.style.textAlign = 'center'
+        postSection.append(noResults)
+       }
        
     blogPosts.map( post => {
 

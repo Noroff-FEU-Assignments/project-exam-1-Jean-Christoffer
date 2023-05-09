@@ -32,6 +32,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script>
   <script src="components/hamburger.js" type="module" defer></script>
@@ -102,10 +105,6 @@
 
           </div>
           <div class="input-container flex">
-            <label for="email">Email:</label>
-            <input id='email' type="email" class="input-field-email" placeholder="example@mail.com" required />
-          </div>
-          <div class="input-container flex">
             <label for="comment">Comment:</label>
             <textarea id='comment' type="text" class="input-field-comment" placeholder="Your comment"
               required></textarea>
@@ -136,17 +135,33 @@
       </div>
       <form class="footer-form form flex">
         <div class="subscribe">
-          <h2>Subscribe to our news letter</h2>
-          <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
+          <h2 id="subscribe-heading">Subscribe to our newsletter</h2>
+          <p>
+            Stay updated with our latest blog posts and happenings in the electronic music scene
+          </p>
         </div>
         <div>
-          <input type="email" required placeholder="example@mail.com" class="form-field" />
-          <button class="btn subscribe-btn">Subscribe</button>
+          <label for="email-input" class="sr-only">Email address</label>
+          <input
+            id="email-input"
+            type="email"
+            required
+            placeholder="example@mail.com"
+            class="form-field"
+          />
+          <span class="error-message"></span>
+          <button type="submit" class="btn subscribe-btn">Subscribe</button>
         </div>
       </form>
       <div class="copyright">
         <h1>WAVE</h1>
         <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
+      </div>
+    </div>
+    <div class="snackbar-wrapper snackbar-wrapper-footer">
+      <div class="snackbar flex">
+
+        <p class="snab"></p>
       </div>
     </div>
   </footer>
