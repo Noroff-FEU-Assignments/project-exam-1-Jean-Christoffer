@@ -64,30 +64,30 @@
     <section class="contact-section">
       <h1>Contact</h1>
 
-      <form class="comment-form contact-form" aria-label="Contact form">
+      <form class="comment-form contact-form" aria-label="Contact form" method="post">
         <fieldset>
           <legend>
             <h2>Send us a message</h2>
           </legend>
           <div class="input-container flex">
-            <label for="name">Name:</label>
-            <input id='name' type="text" class="input-field-name" placeholder="John Cool" required>
+            <label for="your-name">Your name</label>
+            <input id='your-name' type="text" class="input-field-name" placeholder="John Cool" required name='your-name'>
             <span class="error-message"></span>
           </div>
           <div class="input-container flex">
-            <label for="email">Email:</label>
-            <input id='email' type="email" class="input-field-email" placeholder="example@mail.com" required>
+            <label for="your-email">Your email</label>
+            <input id='your-email' type="email" class="input-field-email" placeholder="example@mail.com" required name='your-email'>
             <span class="error-message"></span>
           </div>
           <div class="input-container flex">
-            <label for="subject">Subject:</label>
-            <input id='subject' type="text" class="input-field-subject" placeholder="subject" required>
+            <label for="your-subject">Subject</label>
+            <input id='your-subject' type="text" class="input-field-subject" placeholder="subject" required name='your-subject'>
             <span class="error-message"></span>
           </div>
           <div class="input-container flex">
-            <label for="question">Question:</label>
-            <textarea id='question' type="text" class="input-field-comment" name="question" placeholder="Your question"
-              required></textarea>
+            <label for="your-message">Your message</label>
+            <textarea id='your-message' type="text" class="input-field-comment" name="question" placeholder="Your question"
+              required name='your-message'></textarea>
               <span class="error-message"></span>
           </div>
           <div class="input-container repply-shortly flex">
