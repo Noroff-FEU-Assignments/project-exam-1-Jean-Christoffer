@@ -1112,13 +1112,12 @@ textarea{
   cursor: pointer;
 }
 dialog{
-  max-width: 900px;
+  max-width: 1000px;
   border: none;
   background: none;
 }
 dialog::backdrop{
   background-color: rgba(0, 0, 0, 0.5); 
-
   cursor: pointer;
 }
 .modal{
