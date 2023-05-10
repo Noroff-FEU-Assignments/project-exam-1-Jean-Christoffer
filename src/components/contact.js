@@ -1,6 +1,5 @@
 import showSnackBar from "./snackBar.js";
 
-
 const nameInput = document.querySelector('#your-name')
 const mailInput = document.querySelector('#your-email')
 const subjectInput = document.querySelector('#your-subject')

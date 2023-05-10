@@ -505,7 +505,7 @@ header, .nav{
   max-width: var(--article-size-medium);
   margin-bottom: 10px;
   border-radius: 5px;
-  box-shadow: 3px 4px 4px rgb(56, 55, 55);
+  box-shadow: 3px 4px 4px rgb(95, 94, 94);
 }
 .article-header{
   width: 100%;
@@ -754,8 +754,9 @@ footer{
 .svg-container{
   z-index: 2;
   position: relative;
-
-
+}
+.image-carousel{
+  cursor: pointer;
 }
 .about-us-section{
   position: relative;
@@ -1124,13 +1125,18 @@ dialog::backdrop{
   position: relative;
 
 }
-.modal button{
+.modal-btn{
   position: absolute;
   top:1rem;
   right:1rem;
   font-size: 1rem;  
 }
+.about-img-modal{
+  max-width: 1000px;
+  overflow: hidden;
+  position: relative;
 
+}
 /*overlay-body*/
 .overlay{
   background: black;
