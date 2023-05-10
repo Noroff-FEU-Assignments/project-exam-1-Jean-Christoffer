@@ -1,5 +1,5 @@
 import showSnackBar from "./snackBar.js";
-import FetchHelper from "./fetchHelper.js";
+
 
 const nameInput = document.querySelector('#your-name')
 const mailInput = document.querySelector('#your-email')

@@ -1108,7 +1108,6 @@ textarea{
 }
 
 /*Modal*/
-
 .article-header{
   cursor: pointer;
 }
@@ -1116,8 +1115,6 @@ dialog{
   max-width: 900px;
   border: none;
   background: none;
-
-
 }
 dialog::backdrop{
   background-color: rgba(0, 0, 0, 0.5); 
@@ -1132,9 +1129,7 @@ dialog::backdrop{
   position: absolute;
   top:1rem;
   right:1rem;
-  font-size: 1rem;
-
-  
+  font-size: 1rem;  
 }
 
 /*overlay-body*/
