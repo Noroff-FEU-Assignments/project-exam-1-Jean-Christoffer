@@ -542,6 +542,9 @@ header, .nav{
   }
 }
 /*Post page*/
+.post-section{
+  overflow-x: hidden;
+}
 .search-form{
   align-items: center;
   gap: 10px;
@@ -589,6 +592,7 @@ header, .nav{
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+
 }
 .posts-img-container{
   max-width: 450px;
@@ -602,6 +606,7 @@ header, .nav{
 }
 .article-title-container{
   width: 400px;
+  text-align: center;
 
 }
 .section-wrapper h1{
@@ -612,6 +617,11 @@ header, .nav{
 @media(min-width:52rem){
   .section-wrapper h1{
     text-align: left;
+  }
+  .article-title-container{
+
+    text-align: left;
+  
   }
 }
 /*Footer*/
@@ -1118,8 +1128,9 @@ dialog{
   background: none;
 }
 dialog::backdrop{
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.781);
   cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 .modal{
   position: relative;

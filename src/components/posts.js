@@ -1,5 +1,5 @@
 import FetchHelper from "./fetchHelper.js";
-
+import { gsap } from "gsap";
 const loader = document.querySelector('.spinner')
 const postSection = document.querySelector('.post-section')
 const category = document.querySelector('.category')
@@ -42,9 +42,10 @@ async function getData(categoryValue = '', searchQuery =''){
     }
 }
 
- function renderHTML(data, totalPosts){
-
+ function renderHTML(data, totalPosts,initialAnimate = true){
+    
      blogPosts = data
+  
 
 
     const total = Number.parseInt(totalPosts,10)
@@ -55,7 +56,7 @@ async function getData(categoryValue = '', searchQuery =''){
         if (postArr < total) {
           pages += 3;
           
-          renderPage();
+          renderPage('','',false);
         } 
       });
       if(postArr === total){
@@ -70,6 +71,9 @@ async function getData(categoryValue = '', searchQuery =''){
         noResults.style.textAlign = 'center'
         postSection.append(noResults)
        }
+
+       
+
        
     blogPosts.map( post => {
 
@@ -103,9 +107,31 @@ async function getData(categoryValue = '', searchQuery =''){
                 titleContainer.append(postTitle,postArticle)
                 articleContainer.append(imgContainer, titleContainer)            
                 postSection.append(articleContainer)
-            });       
+            });
+
+            if(initialAnimate){
+                    gsap.fromTo('.article-container',
+                    {
+                    x:'200%'
+                    },
+                {
+                  x:0,
+                  duration:0.5,
+                  ease: "power2.out",
+                  stagger:{
+                    each:0.2,
+                    from:'start'
+                  }
+                
+                })
+
+          }
+
+          
+      
 
 }
+
 //filter
 category.addEventListener('change',()=>{
     let found = categoriesArr.find(item => item.name === category.value)
@@ -140,18 +166,17 @@ function search(cleaner){
 
 
 
-async function renderPage(categoryValue = '', searchQuery = ''){
+async function renderPage(categoryValue = '', searchQuery = '',initialAnimate, loadMoreAnimate){
     try{
         loader.classList.add('show')
-        console.log(categoryValue)
-
         const [data, totalPosts ]= await getData(categoryValue,searchQuery) 
-        renderHTML(data,totalPosts)
+        renderHTML(data,totalPosts,initialAnimate)
 
     }catch(error){
         console.log(error)
     }finally{
         loader.classList.remove('show')
+      
     }
 }
 
@@ -159,4 +184,9 @@ window.addEventListener('load',() => {
   category.value = ''
   sortDate.value = 'newest'
 })
+
+
+
+
+
 renderPage()

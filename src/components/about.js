@@ -1,8 +1,10 @@
+import gsap from 'gsap'
 const buttons = document.querySelectorAll('.img-slider-button');
 const slides = document.querySelector('#slides');
 const body = document.querySelector('body')
 const slideImages = document.querySelector('.image-slider');
 const modalBtn = document.querySelector( '.modal-btn')
+const postSection = document.querySelector('.post-section')
 
 const modal = document.querySelector('.about-modal')
 buttons.forEach(button => {
@@ -52,4 +54,3 @@ dialog.addEventListener("click", (event) => {
     body.classList.remove('stop-scrolling')
 })
 
-  
