@@ -271,9 +271,12 @@ header, .nav{
   .wrapper{
     justify-content: center;
     flex-direction: row;
+    height: 490px;
+    width: var(  --size-xxl);
+    margin: 0 auto;
   }
   .slider{
-    max-width:var(--max-size);
+    width: var(--size-xl);
     font-size: 0px;
     display: inline-block;
     scroll-behavior: smooth;
@@ -409,7 +412,7 @@ header, .nav{
   font-size: 1rem;
 }
 .latest-posts{
-  max-width: 1150px;
+  width: var(--size-xl);
   margin: 0 auto;
 }
 @media(min-width:52rem){
