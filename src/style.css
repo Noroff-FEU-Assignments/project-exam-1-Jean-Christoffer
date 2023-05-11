@@ -500,7 +500,7 @@ header, .nav{
 }
 
 .comment-container{
-  background: rgb(218, 216, 216);
+  background: rgb(240, 239, 239);
   padding: 20px;
   max-width: var(--article-size-medium);
   margin-bottom: 10px;
