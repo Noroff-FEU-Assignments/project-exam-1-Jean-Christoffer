@@ -13,7 +13,7 @@ let pages = 1
 let blogPosts = []
 let total = 0
 let categoriesArr = []
-let renderedPosts = 0;
+
 
   async function getCategory(){
     const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
@@ -48,7 +48,6 @@ async function getData(categoryValue = '', searchQuery =''){
  function renderHTML(data, totalPosts,animate = true){
 
     blogPosts = data
-    renderedPosts = blogPosts.length;
     const total = Number.parseInt(totalPosts,10)
 
 
