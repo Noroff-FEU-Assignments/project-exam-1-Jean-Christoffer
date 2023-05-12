@@ -1006,7 +1006,8 @@ margin: auto;
   border-radius: 3px;
 }
 textarea{
-  height:150px
+  height:150px;
+  resize: none;
 }
 .input-container input:hover, textarea:hover{
   border: 1px solid #999;
