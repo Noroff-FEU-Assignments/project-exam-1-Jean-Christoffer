@@ -36,8 +36,7 @@ async function getData(categoryValue = '', searchQuery =''){
           response = await API.get(`?_embed${categoryValue ? categoryValue : ''}&orderby=date&order=desc&page=${pages}`)    
         }       
         const data = await response.json();
-        total = response.headers.get('x-wp-total');
-        console.log(total)
+        total = response.headers.get('x-wp-totalpages');
         return [data, total]
     }catch(error){
         console.log(error)
@@ -49,18 +48,18 @@ async function getData(categoryValue = '', searchQuery =''){
  function renderHTML(data, totalPosts,animate = true){
 
     blogPosts = data
-    renderedPosts += blogPosts.length;
+    renderedPosts = blogPosts.length;
     const total = Number.parseInt(totalPosts,10)
 
 
     loadMore.addEventListener('click', async () => {
-      if (renderedPosts < total) {
+      if (pages < total) {
         pages += 1;
         renderPage('','',false)
       }
     });
 
-      if(renderedPosts >= total){
+      if(pages === total){
         loadMore.style.display = 'none'
       }else{
         loadMore.style.display = 'block'
@@ -146,6 +145,7 @@ async function getData(categoryValue = '', searchQuery =''){
 category.addEventListener('change',()=>{
     let found = categoriesArr.find(item => item.name === category.value)
     found ? renderPage(`&categories=${found.id || ''}`,'') : renderPage('','')
+    postSection.textContent = ''
 })
 
 sortDate.addEventListener('change', () => {
@@ -171,6 +171,7 @@ searchForm.addEventListener('submit',(e)=>{
 function search(cleaner){
     const trimmed = cleaner.trim()
     const urlConvert = encodeURIComponent(trimmed);
+    postSection.textContent = ''
     renderPage('',urlConvert)
 }
 
