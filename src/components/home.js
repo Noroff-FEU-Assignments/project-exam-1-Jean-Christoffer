@@ -138,9 +138,6 @@ async function renderPage(){
 renderPage()
 
 //Slider 
-
-
-
 function sliderFunction(){
     const topSlider = document.querySelectorAll('.arrow')
     const slider = document.querySelector('.slider')

@@ -72,11 +72,7 @@ async function getData(categoryValue = '', searchQuery =''){
         noResults.textContent = `No results matching "${searchInput.value}" found`
         noResults.style.textAlign = 'center'
         postSection.append(noResults)
-       }
-
-       
-  
-       
+       }   
     blogPosts.forEach( post => {
 
 
