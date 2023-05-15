@@ -197,7 +197,6 @@ header, .nav{
 
   .arrow {
     display: block;
-    transform: translateY(-50%);
     border: none;
     width:2.5rem;
     height: 2,5rem;
@@ -215,12 +214,7 @@ header, .nav{
   background-color: #817e7e;
   color: var(--black);
 }
-.arrow-right{
-  right: 10.5px;
-}
-.arrow-left{
-  left:0;
-}
+
 .arrow:disabled{
   opacity: 0.5;
   cursor: default;
@@ -329,7 +323,7 @@ header, .nav{
   align-items: center;
   padding: 15px;
 }
-.card-body-container hr{
+.card-body-container hr{  
   top: 70%;
   width: 80%;
   left: 10%;
@@ -649,12 +643,12 @@ footer{
 /*Buttons*/
 
 .btn-container{
-  margin: 10px auto;
+  margin: 10px;
   gap:10px;
   text-align: center;
   justify-content: center;
 }
-.learn-more-btn, .load-more, .post-btn{
+.learn-more-btn, .load-more, .post-btn,.about-btn{
   width: 200px;
 }
 .btn {
