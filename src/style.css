@@ -694,8 +694,8 @@ footer{
   display: block;
 }
 .content-wrapper{
-  background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
-}
+
+  }
 .contact-section{
   width: var(--size-md);
   margin: 50px auto;
