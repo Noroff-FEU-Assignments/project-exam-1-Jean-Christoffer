@@ -2,11 +2,6 @@
 import FetchHelper from "./fetchHelper.js";
 const latestSection = document.querySelector('#latest')
 const loader = document.querySelector('.spinner')
-
-
-
-
-
 let maxPerPage = `&per_page=6`
 let dateDescending = `&orderby=date&order=desc`
 
