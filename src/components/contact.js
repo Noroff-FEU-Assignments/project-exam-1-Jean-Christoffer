@@ -30,7 +30,7 @@ contactForm.addEventListener('submit', async function(e) {
         question.value = ''
         showSnackBar(snackbarWrapper, 'Message sendt! we will reply shortly')
 
-        fetch(`${import.meta.env.VITE_API_KEY3}56/feedback`, {
+        fetch(`${import.meta.env.VITE_API_KEY}contact-form-7/v1/contact-forms/56/feedback`, {
             method: 'POST',
             body: formData
           })

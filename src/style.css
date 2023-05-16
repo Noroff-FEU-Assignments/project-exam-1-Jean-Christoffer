@@ -455,7 +455,7 @@ header, .nav{
 }
 .comment-section{
     margin-top: 50px;
-    position: relative;  
+
 }
 .blog-container{
   position: relative;
@@ -900,6 +900,9 @@ footer{
 }
 
 /*Forms*/
+.comment-form{
+  position: relative;
+}
 .input-container{
   flex-direction: column;
   gap:10px;
@@ -1008,7 +1011,7 @@ input,textarea{
   justify-content: space-evenly;
 }
 .snackbar-wrapper{
-  top: 50vh;
+  bottom: 10vh;
   left: 50%;
 }
 .snackbar-wrapper-footer{

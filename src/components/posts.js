@@ -16,7 +16,7 @@ let categoriesArr = []
 
 
   async function getCategory(){
-    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts`)
     const response = await API.get(`categories`)
     const categories = await response.json()
     categoriesArr.push(...categories)
@@ -27,7 +27,7 @@ let categoriesArr = []
 
 async function getData(categoryValue = '', searchQuery =''){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts`)
         let response
         if(searchQuery !== ''){
           response  = await API.get(`?_embed&search=${searchQuery}`)

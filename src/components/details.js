@@ -20,7 +20,7 @@ const selectors = [
     '.comment-field',
     '.comment-count',
     '.snackbar-wrapper',
-    '.comment-btn',
+    '#comment-btn',
     '.modal',
     '.modal-img',
     '.modal-btn',
@@ -51,7 +51,7 @@ const [
 
 async function getData(param){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}/${param}`)
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts/${param}`)
         const response = await API.get(`?_embed`)
         const data = await response.json(); 
      
@@ -76,7 +76,7 @@ form.addEventListener('submit', async function(e) {
     if( nameValue.length > 0  &&  commentValue.length > 0){
         try{
             commentButton.disabled = true
-            const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+            const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
             const post = await API.post(`comments?post=${id}`,{
                 "post": id,
                 "author_name": `${authorName.value}`,
@@ -102,7 +102,7 @@ form.addEventListener('submit', async function(e) {
 
 async function getComments(){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
         const response = await API.get(`comments?post=${id}`)
         const comments = await response.json()
 
