@@ -16,10 +16,11 @@ let categoriesArr = []
 
 
   async function getCategory(){
-    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts`)
+    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
     const response = await API.get(`categories`)
     const categories = await response.json()
     categoriesArr.push(...categories)
+
     return categoriesArr
   }
 
@@ -37,7 +38,7 @@ async function getData(categoryValue = '', searchQuery =''){
               
         }       
         const data = await response.json();
-        console.log(data)
+ 
         total = response.headers.get('x-wp-totalpages');
         return [data, total]
     }catch(error){
