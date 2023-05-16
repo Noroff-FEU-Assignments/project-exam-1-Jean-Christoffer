@@ -58,7 +58,7 @@ async function renderHTML(data){
 
                 const headerImage = document.createElement('img')
                 headerImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
-                headerImage.alt = post.title.rendered
+                headerImage.alt = `${post._embedded['wp:featuredmedia'][0].alt_text}`
       
 
                 headerImageLink.append(headerImage)

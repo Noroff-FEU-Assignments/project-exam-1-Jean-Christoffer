@@ -89,6 +89,7 @@ async function getData(categoryValue = '', searchQuery =''){
         imgContainer.className = 'posts-img-container'
         const articleImg = document.createElement('img')
         articleImg.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
+        articleImg.alt = `${post._embedded['wp:featuredmedia'][0].alt_text}`
         imgContainer.append(articleImg)
 
         const titleContainer = document.createElement('div')
