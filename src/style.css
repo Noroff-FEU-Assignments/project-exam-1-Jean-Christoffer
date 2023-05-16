@@ -684,7 +684,9 @@ footer{
   right:1rem;
   font-size: 1rem;  
 }
-
+.subscribe-btn{
+  border-radius: 0;
+}
 /*Contact*/
 .error-message{
   color: red;
