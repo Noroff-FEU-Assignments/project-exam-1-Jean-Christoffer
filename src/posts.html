@@ -70,23 +70,24 @@
         <h1>Posts</h1>
         <div class="post-form-wrapper flex">
           <div class="sort-form">
-            <select class="category">
+            <label for="categorySelect" class="sr-only">Category</label>
+            <select class="category" name="category" id="categorySelect">
               <option value="">Category</option>
               <option value="AI technology">AI technology</option>
               <option value="Sound">Sound</option>
               <option value="Scene">Scene</option>
             </select>
-
-            <select class="sort-date">
+            <label for="sort-date-old-new" class="sr-only">Sort-date</label>
+            <select class="sort-date" id="sort-date-old-new" name="sort-date">
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
             </select>
           </div>
           <form class="search-form flex">
             <div class="search input-container flex">
-              <label for="search">Search post</label>
+              <label for="search" class="sr-only">Search post</label>
                 <div class="flex search-input-container">
-                  <input type="text" id="search" placeholder="search post" />
+                  <input type="text" id="search" placeholder="search post" name="search-post" />
                   <button class="btn">Seach</button>
                 </div>
             </div>
