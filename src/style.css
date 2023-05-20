@@ -513,8 +513,8 @@ header, .nav{
 
 .post-form-wrapper{
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .category, .sort-date{
   height: 50px;
@@ -549,7 +549,8 @@ header, .nav{
   background: #eeeaea;
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+
 }
 .posts-img-container{
   max-width: 450px;
@@ -557,7 +558,7 @@ header, .nav{
   overflow: hidden; 
 }
 .article-title-container{
-  width: 400px;
+  max-width: 400px;
   text-align: center;
 
 }
@@ -569,6 +570,9 @@ header, .nav{
 @media(min-width:52rem){
   .section-wrapper h1{
     text-align: left;
+  }
+  .article-container{
+    flex-direction: row;
   }
   .article-title-container{
     text-align: left;  
@@ -639,6 +643,10 @@ footer{
     justify-content: space-between;
     text-align: left;
   }
+  .subscribe-btn{
+
+    margin-top: 0px;
+  }
 }
 
 /*Buttons*/
@@ -661,7 +669,7 @@ footer{
 	outline: 0;
 	padding: 10px;
 	cursor: pointer;
-  border-radius: 3px;
+    border-radius: 3px;
 }
 .btn:active{
   background: #4285f4;
@@ -682,10 +690,16 @@ footer{
   position: absolute;
   top:1rem;
   right:1rem;
-  font-size: 1rem;  
+  font-size: 1rem;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
 }
 .subscribe-btn{
   border-radius: 0;
+  margin-top: 10px;
 }
 /*Contact*/
 .error-message{
@@ -1013,8 +1027,8 @@ input,textarea{
   justify-content: space-evenly;
 }
 .snackbar-wrapper{
-  bottom: 10vh;
   left: 50%;
+  top:50%;
 }
 .snackbar-wrapper-footer{
   top:2rem;

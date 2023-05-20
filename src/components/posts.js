@@ -81,11 +81,12 @@ function renderHTML(data, totalPosts, animate = true) {
     articleContainer.className = "article-container";
     articleContainer.id = post.id;
 
-    const imgContainer = document.createElement("div");
+    const imgContainer = document.createElement("a");
     imgContainer.className = "posts-img-container";
     const articleImg = document.createElement("img");
     articleImg.src = `${post._embedded["wp:featuredmedia"][0].source_url}`;
     articleImg.alt = `${post._embedded["wp:featuredmedia"][0].alt_text}`;
+    imgContainer.href = `details.html?id=${post.id}`;
     imgContainer.append(articleImg);
 
     const titleContainer = document.createElement("div");
@@ -150,12 +151,13 @@ function search(cleaner) {
 loadMore.addEventListener("click", async () => {
   if (pages < total) {
     pages += 1;
-    renderPage('','',false,true)
+    sortDate.value = "newest"
+    renderPage('','',false)
   }
 });
 
 
-async function renderPage(categoryValue = "", searchQuery = "", animate,loadedMore = false) {
+async function renderPage(categoryValue = "", searchQuery = "", animate) {
   try {
     loader.classList.add("show");
     const [data, totalPosts] = await getData(categoryValue, searchQuery);
