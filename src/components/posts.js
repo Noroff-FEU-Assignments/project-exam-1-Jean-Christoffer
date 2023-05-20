@@ -145,6 +145,7 @@ function renderHTML(data, totalPosts, animate = true) {
 category.addEventListener("change", () => {
   pages = 1;
   posts = []
+  sortDate.value = "newest"
   let found = categoriesArr.find((item) => item.name === category.value);
   found ? renderPage(`&categories=${found.id || ""}`, "") : renderPage("", "");
 });
@@ -159,6 +160,7 @@ searchForm.addEventListener("submit", (e) => {
 function search(cleaner) {
   pages = 1;
   posts = []
+  sortDate.value = "newest"
   const trimmed = cleaner.trim();
   const urlConvert = encodeURIComponent(trimmed);
 

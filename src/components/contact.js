@@ -5,10 +5,10 @@ const selectors =
     '#your-name',
     '#your-email',
     '#your-subject',
-    '.contact-form',
+    '#your-message',
     '.contact-form',
     '.snackbar-wrapper',
-    '#your-message'
+    
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
 
@@ -17,9 +17,10 @@ const
     nameInput,
     mailInput,
     subjectInput,
+    question,
     contactForm,
     snackbarWrapper,
-    question,
+    
     
 ] = mapSelect
 
