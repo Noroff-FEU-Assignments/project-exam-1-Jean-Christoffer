@@ -1,9 +1,23 @@
+const selectors = 
+[
+    '#slides',
+    'body',
+    '.modal-btn',
+    '.about-modal',
+]
+const mapSelect = selectors.map(element => document.querySelector(element))
+
+const 
+[
+    slides,
+    body,
+    modalBtn,
+    modal,
+    
+] = mapSelect
 
 const buttons = document.querySelectorAll('.img-slider-button');
-const slides = document.querySelector('#slides');
-const body = document.querySelector('body')
-const modalBtn = document.querySelector( '.modal-btn')
-const modal = document.querySelector('.about-modal')
+
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const findNext = button.classList.contains('next') ? 1 : -1;

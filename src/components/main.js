@@ -1,15 +1,29 @@
-const hamburger = document.querySelector('.hamburger')
-const nav = document.querySelector('.nav')
-const overlay = document.querySelector('.overlay')
-const body = document.querySelector('body')
+const selectors =
+[
+    '.hamburger',
+    '.nav',
+    '.overlay',
+    'body',
+    '.footer-form',
+    '#email-input',
+    '.snackbar-wrapper-footer',
+]
+
+const mapSelect = selectors.map(element => document.querySelector(element))
+
+const 
+[
+    hamburger,
+    nav,
+    overlay,
+    body,
+    footerForm,
+    emailInput,
+    snackbarWrapper,
+
+] = mapSelect
+
 const menuItems = document.querySelectorAll('.menu_item')
-
-const footerForm = document.querySelector('.footer-form ')
-const emailInput = document.querySelector('#email-input')
-const snackbarWrapper = document.querySelector('.snackbar-wrapper-footer')
-
-
-
 
 import showSnackBar from "./snackBar.js";
 let activeClass = false

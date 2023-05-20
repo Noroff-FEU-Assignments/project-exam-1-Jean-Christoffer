@@ -1,14 +1,30 @@
 import FetchHelper from "./fetchHelper.js";
 import { gsap } from "gsap";
 
-const loader = document.querySelector(".spinner");
-const postSection = document.querySelector(".post-section");
-const category = document.querySelector(".category");
-const loadMore = document.querySelector(".load-more");
-const sortDate = document.querySelector(".sort-date");
+const selectors =
+[
+    '.spinner',
+    '.post-section',
+    '.category',
+    '.load-more',
+    '.sort-date',
+    '.search-form',
+    '#search',
+]
 
-const searchForm = document.querySelector(".search-form");
-const searchInput = document.querySelector("#search");
+const mapSelect = selectors.map(element => document.querySelector(element))
+
+const 
+[
+    loader,
+    postSection,
+    category,
+    loadMore,
+    sortDate,
+    searchForm,
+    searchInput,
+
+] = mapSelect
 
 let pages = 1;
 let blogPosts = [];

@@ -1,11 +1,27 @@
 import showSnackBar from "./snackBar.js";
 
-const nameInput = document.querySelector('#your-name')
-const mailInput = document.querySelector('#your-email')
-const subjectInput = document.querySelector('#your-subject')
-const contactForm = document.querySelector('.contact-form')
-const snackbarWrapper = document.querySelector('.snackbar-wrapper')
-const question = document.querySelector('#your-message')
+const selectors = 
+[
+    '#your-name',
+    '#your-email',
+    '#your-subject',
+    '.contact-form',
+    '.contact-form',
+    '.snackbar-wrapper',
+    '#your-message'
+]
+const mapSelect = selectors.map(element => document.querySelector(element))
+
+const 
+[
+    nameInput,
+    mailInput,
+    subjectInput,
+    contactForm,
+    snackbarWrapper,
+    question,
+    
+] = mapSelect
 
 contactForm.addEventListener('submit', async function(e) {
     e.preventDefault()

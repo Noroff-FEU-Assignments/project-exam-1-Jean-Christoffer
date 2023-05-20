@@ -6,17 +6,15 @@ const queryString = document.location.search;
 const params  = new URLSearchParams(queryString);
 const id = params.get("id");
 
-const selectors = [
-    '.blog-section',
+const selectors =
+[
     '.blog-title',
-    '.blog',
     '.blog-container',
     '.date','.author',
     'form',
     '.input-field-name',
     '.input-field-comment',
     '.article-header',
-    '.input-field-email',
     '.comment-field',
     '.comment-count',
     '.snackbar-wrapper',
@@ -24,13 +22,11 @@ const selectors = [
     '.modal',
     '.modal-img',
     '.modal-btn',
-
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
-const [
-    blogSection,
+const 
+[
     blogTitle,
-    blog,
     blogContainer,
     date,
     author,
@@ -38,7 +34,6 @@ const [
     authorName,
     comment, 
     articleHeader,
-    email,
     commentField,
     commentCount,
     snackbarWrapper,
