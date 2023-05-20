@@ -168,6 +168,7 @@ function renderHtml(data,comments = ''){
  
     
     modalImg.src = data._embedded['wp:featuredmedia'][0].source_url
+    modalImg.alt = data._embedded['wp:featuredmedia'][0].alt_text
     
     const newDate = new Date(data.date)
     

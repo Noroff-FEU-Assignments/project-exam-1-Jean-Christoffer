@@ -51,6 +51,9 @@ body {
   flex-direction: column;
 
 }
+.blog-title{
+    font-family: var(--heading-rest-font);
+}
 .title-site,h1 {
   font-family: var(--heading-font);
   font-size: 2rem;
