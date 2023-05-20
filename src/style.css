@@ -180,10 +180,6 @@ header, .nav{
   .nav{      
       gap:clamp(1rem, 4vw, 2rem);
       padding-inline:clamp(2.5rem, 6vw , 9rem);
-      background: white;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
   }
   .nav a:hover, .active-page {
       transition: 0.5s ease;
@@ -362,6 +358,7 @@ header, .nav{
   background-position: 50%;
   margin: 0;
   position: relative;
+  background-color: black;
 }
 .hero-text{
   position: absolute;
