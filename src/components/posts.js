@@ -1,5 +1,6 @@
 import FetchHelper from "./fetchHelper.js";
 import { gsap } from "gsap";
+
 const loader = document.querySelector(".spinner");
 const postSection = document.querySelector(".post-section");
 const category = document.querySelector(".category");
@@ -13,6 +14,7 @@ let pages = 1;
 let blogPosts = [];
 let total = 0;
 let categoriesArr = [];
+let posts = []
 
 async function getCategory() {
   const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`);
@@ -49,15 +51,10 @@ async function getData(categoryValue = "", searchQuery = "") {
 
 function renderHTML(data, totalPosts, animate = true) {
   blogPosts = data;
+  postSection.textContent = "";
   const total = Number.parseInt(totalPosts, 10);
   console.log(pages, total);
 
-  loadMore.addEventListener("click", async () => {
-    if (pages < total) {
-      pages += 1;
-      renderPage("", "", false);
-    }
-  });
 
   if (pages === total || blogPosts.length === 0) {
     loadMore.style.display = "none";
@@ -130,9 +127,9 @@ function renderHTML(data, totalPosts, animate = true) {
 //filter
 category.addEventListener("change", () => {
   pages = 1;
+  posts = []
   let found = categoriesArr.find((item) => item.name === category.value);
   found ? renderPage(`&categories=${found.id || ""}`, "") : renderPage("", "");
-  postSection.textContent = "";
 });
 
 
@@ -144,35 +141,43 @@ searchForm.addEventListener("submit", (e) => {
 });
 function search(cleaner) {
   pages = 1;
+  posts = []
   const trimmed = cleaner.trim();
   const urlConvert = encodeURIComponent(trimmed);
-  postSection.textContent = "";
+
   renderPage("", urlConvert);
 }
+loadMore.addEventListener("click", async () => {
+  if (pages < total) {
+    pages += 1;
+    renderPage('','',false,true)
+  }
+});
 
-async function renderPage(categoryValue = "", searchQuery = "", animate) {
+
+async function renderPage(categoryValue = "", searchQuery = "", animate,loadedMore = false) {
   try {
-
     loader.classList.add("show");
     const [data, totalPosts] = await getData(categoryValue, searchQuery);
-
+    posts.push(...data)
+    console.log(posts)
     sortDate.addEventListener("change", () => {
       let sortedValue;
     
       if (sortDate.value === "oldest") {
-        sortedValue = data
+        sortedValue = posts
           .slice()
           .sort((a, b) => new Date(a.date) - new Date(b.date));
       }
       if (sortDate.value === "newest") {
-        sortedValue = data
+        sortedValue = posts
           .slice()
           .sort((a, b) => new Date(b.date) - new Date(a.date));
       }
-      postSection.textContent=''
+
       renderHTML(sortedValue,totalPosts, true);
     });
-    renderHTML(data, totalPosts, animate);
+    renderHTML(posts, totalPosts, animate);
   } catch (error) {
     console.log(error);
   } finally {
