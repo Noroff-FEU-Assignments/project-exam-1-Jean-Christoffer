@@ -7,6 +7,10 @@ const menuItems = document.querySelectorAll('.menu_item')
 const footerForm = document.querySelector('.footer-form ')
 const emailInput = document.querySelector('#email-input')
 const snackbarWrapper = document.querySelector('.snackbar-wrapper-footer')
+
+
+
+
 import showSnackBar from "./snackBar.js";
 let activeClass = false
 hamburger.addEventListener('click',  () => {

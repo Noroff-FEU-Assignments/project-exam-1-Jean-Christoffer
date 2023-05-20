@@ -165,7 +165,7 @@ function renderHtml(data,comments = ''){
 
     blogTitle.textContent =  data.title.rendered
     author.textContent = `Author: ${data._embedded.author[0].name}`
- 
+    document.title = `WAVE || ${data.title.rendered}`
     
     modalImg.src = data._embedded['wp:featuredmedia'][0].source_url
     modalImg.alt = data._embedded['wp:featuredmedia'][0].alt_text
