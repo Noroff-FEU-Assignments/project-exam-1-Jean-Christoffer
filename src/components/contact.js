@@ -35,10 +35,10 @@ contactForm.addEventListener('submit', async function(e) {
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
     const patternMatches = regEx.test(email);
 
-    name.length > 5 ? removeErrorMessage(nameInput) : errorMessage(nameInput,'Please provide atleast 6 characters')
+    name.length > 5 ? removeErrorMessage(nameInput) : errorMessage(nameInput,'Must be greater than 5 characters')
     patternMatches ? removeErrorMessage(mailInput) : errorMessage(mailInput, 'Please enter a valid email')
-    subject.length > 15 ?  removeErrorMessage(subjectInput) : errorMessage(subjectInput, 'Please provide atleast 16 characters')
-    questionValue.length > 25 ? removeErrorMessage(question) : errorMessage(question, 'Please provide atleast 26 characters')
+    subject.length > 15 ?  removeErrorMessage(subjectInput) : errorMessage(subjectInput, 'Must be greater than 15 characters')
+    questionValue.length > 25 ? removeErrorMessage(question) : errorMessage(question, 'Must be greater than 25 characters')
 
     if( name.length >= 5 && patternMatches && subject.length >= 15 && questionValue.length >= 25){
         nameInput.value = ''
