@@ -160,7 +160,7 @@ function sliderFunction(){
         
             }
             buttonChecker(maxIndex,cardIndex)
-            console.log(cardIndex)
+  
         })
 
     })

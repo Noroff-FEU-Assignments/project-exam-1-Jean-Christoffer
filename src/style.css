@@ -5,19 +5,17 @@
   --heading-rest-font:'Titillium Web', sans-serif,'Roboto Slab', serif;
 
   --white:#FFFFFF;
-  --card-white1:#ECE9E6;
-  --card-white2:#f1f0ef;
 
-  --categories-blue1:#56CCF2;
-  --categories-blue2:#1e4f91;
-  --categories-blue3:#37abd1;
+  --linear-gradient:linear-gradient(90deg, rgba(239,239,242,1) 0%, rgba(249,243,243,1) 100%);
+  --linear-gradient2: linear-gradient(to right, #141313 50%, #f8f6f6 50%);
+
+  --blue1:#1e4f91;
+  --blue2:#37abd1;
 
   --black:#000000;
   --black2:#141313;
 
-  --red1:#bb1f1f;
-  --red2:#862323;
-  --red3: #311111;
+
 
   /*Sizes*/
   --article-size-small: min(37.5rem, calc(100%  2rem));
@@ -273,9 +271,8 @@ header, .nav{
   height: 450px;
   overflow: hidden;
   border-radius: 5px;
-  color: black;
-  background: rgb(239,239,242);
-  background: linear-gradient(90deg, rgba(239,239,242,1) 0%, rgba(249,243,243,1) 100%);
+  color: var(--black);
+  background: var(--linear-gradient);
   font-size: 16px;
   position: relative;
 }
@@ -433,13 +430,13 @@ header, .nav{
   background-position: center;
 }
 .article-text-container{
-  background-color: #101111;
+  background-color: var(--black2);
   padding: 20px;
 }
 
 @media(min-width:1344px){
   .excerpt{
-    background: linear-gradient(to right, #141313 50%, #f8f6f6 50%);
+    background: var(--linear-gradient2);
   }
   .excerpt-article{
     padding-left: 40px;
@@ -472,7 +469,7 @@ header, .nav{
   background-repeat: no-repeat;
 } 
 .comment-field{
-  background: rgb(236, 234, 234);
+  background: var(--linear-gradient);
   flex-direction: column;
   border-radius: 5px;
 }
@@ -480,7 +477,7 @@ header, .nav{
   padding: 20px;
 }
 .comment-container{
-  background: rgb(240, 239, 239);
+  background: var(--white);
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 3px 4px 4px rgb(95, 94, 94);
@@ -546,7 +543,7 @@ header, .nav{
   padding: 20px;
   gap:20px;
   margin-bottom: 10px;
-  background: #eeeaea;
+  background: var(--linear-gradient);
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -662,17 +659,17 @@ footer{
 }
 .btn {
 	display: inline-block;
-	background: rgb(50, 68, 167);
+	background: var(--blue1);
 	color: white;
 	font: inherit;
 	border: 0;
 	outline: 0;
 	padding: 10px;
 	cursor: pointer;
-    border-radius: 3px;
+  border-radius: 3px;
 }
 .btn:active{
-  background: #4285f4;
+  background: var(--blue2);
   color: white;
 }
 .load-more-container{
