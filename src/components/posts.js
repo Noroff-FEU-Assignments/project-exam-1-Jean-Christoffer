@@ -33,7 +33,7 @@ let categoriesArr = [];
 let posts = []
 
 async function getCategory() {
-  const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`);
+  const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`);
   const response = await API.get(`categories`);
   const categories = await response.json();
   categoriesArr.push(...categories);
@@ -45,7 +45,7 @@ getCategory();
 
 async function getData(categoryValue = "", searchQuery = "") {
   try {
-    const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts`);
+    const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/posts`);
     let response;
     if (searchQuery !== "") {
       response = await API.get(`?_embed&search=${searchQuery}`);

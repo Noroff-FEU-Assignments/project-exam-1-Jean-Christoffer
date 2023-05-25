@@ -46,7 +46,7 @@ const
 
 async function getData(param){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}posts/${param}`)
+        const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/posts/${param}`)
         const response = await API.get(`?_embed`)
         const data = await response.json(); 
      
@@ -71,7 +71,7 @@ form.addEventListener('submit', async function(e) {
     if( nameValue.length > 0  &&  commentValue.length > 0){
         try{
             commentButton.disabled = true
-            const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+            const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`)
             const post = await API.post(`comments?post=${id}`,{
                 "post": id,
                 "author_name": `${authorName.value}`,
@@ -97,7 +97,7 @@ form.addEventListener('submit', async function(e) {
 
 async function getComments(){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+        const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`)
         const response = await API.get(`comments?post=${id}`)
         const comments = await response.json()
 
