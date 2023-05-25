@@ -706,9 +706,7 @@ footer{
 .error-message.show{
   display: block;
 }
-.content-wrapper{
 
-  }
 .contact-section{
   width: var(--size-md);
   margin: 50px auto;

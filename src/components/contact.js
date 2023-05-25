@@ -7,8 +7,7 @@ const selectors =
     '#your-subject',
     '#your-message',
     '.contact-form',
-    '.snackbar-wrapper',
-    
+    '.snackbar-wrapper',   
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
 
@@ -20,8 +19,7 @@ const
     question,
     contactForm,
     snackbarWrapper,
-    
-    
+
 ] = mapSelect
 
 contactForm.addEventListener('submit', async function(e) {
@@ -54,12 +52,44 @@ contactForm.addEventListener('submit', async function(e) {
           .then(response => response.json())
           .catch(error => {
            console.log(error)
-          });
-
-       
-      }
-    
+          });    
+      }    
 })
+
+//BorderValidation
+
+const inputBorders = [nameInput, mailInput,subjectInput,question]
+inputBorders.forEach(el => el.addEventListener('input',inputBorderCheck))
+
+function inputBorderCheck() {
+    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+    const patterns =
+     [
+      {
+         input: mailInput,
+         condition: regEx.test(mailInput.value)
+      },
+      {
+         input: subjectInput, 
+         condition: subjectInput.value.length > 15
+      },
+
+      {
+         input: question, 
+         condition: question.value.length > 25 
+      },
+
+      { 
+        input: nameInput, 
+        condition: nameInput.value.length > 5
+      }
+    ];
+  
+    patterns.forEach(inputElement => {
+        inputElement.input.style.border = inputElement.condition ? '1px solid #5cd55c' : '1px solid #ddd';
+    });
+  }
 
 function errorMessage(input, message){
     let error = input.parentElement.children[2]
@@ -72,6 +102,6 @@ function removeErrorMessage(input){
     error.classList.remove('show')
   }
   
-
+window.addEventListener('load',inputBorderCheck)
 
 
