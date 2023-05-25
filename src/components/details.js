@@ -10,7 +10,8 @@ const selectors =
 [
     '.blog-title',
     '.blog-container',
-    '.date','.author',
+    '.date',
+    '.author',
     'form',
     '.input-field-name',
     '.input-field-comment',
@@ -65,9 +66,6 @@ form.addEventListener('submit', async function(e) {
     const nameValue = authorName.value.toLowerCase().trim()
     const commentValue = comment.value.toLowerCase().trim()
 
-
-
-
     if( nameValue.length > 0  &&  commentValue.length > 0){
         try{
             commentButton.disabled = true
@@ -94,6 +92,15 @@ form.addEventListener('submit', async function(e) {
     }
     
 })
+
+const inputBorders = [authorName, comment]
+inputBorders.forEach(el => el.addEventListener('input',inputBorderCheck))
+function inputBorderCheck() {
+
+    authorName.value.length > 0 ? authorName.style.border = '1px solid #5cd55c' : authorName.style.border = '1px solid #ddd'
+    comment.value.length > 0 ? comment.style.border = '1px solid #5cd55c' : comment.style.border = '1px solid #ddd'
+
+  }
 
 async function getComments(){
     try{
@@ -181,7 +188,6 @@ function renderHtml(data,comments = ''){
 
     commentCount.textContent = `Comments (${comments.length})`
 
-
 }
 
 
@@ -222,4 +228,5 @@ async function renderPage(){
         loader.classList.remove('show')
     }
 }
+window.addEventListener('load',inputBorderCheck)
 renderPage()

@@ -14,9 +14,7 @@
 
   --black:#000000;
   --black2:#141313;
-
-
-
+  
   /*Sizes*/
   --article-size-small: min(37.5rem, calc(100%  2rem));
   --article-size-medium:min(40rem, calc(100%  2rem));
