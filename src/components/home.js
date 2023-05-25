@@ -58,9 +58,9 @@ async function renderHTML(data){
                 headerImage.alt = `${post._embedded['wp:featuredmedia'][0].alt_text}`
       
 
-                headerImageLink.append(headerImage)
+             
                 postTitleContainer.append(headerImageLink)
-              
+                headerImageLink.append(headerImage) 
 
     
                 const cardBodyContainer = document.createElement('div')
