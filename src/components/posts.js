@@ -69,9 +69,7 @@ function renderHTML(data, totalPosts, animate = true) {
   
   postSection.textContent = "";
   const total = Number.parseInt(totalPosts, 10);
-  console.log(pages, total);
-
-
+  
   if (pages === total || data.length === 0) {
     loadMore.style.display = "none";
   } else {
@@ -84,7 +82,6 @@ function renderHTML(data, totalPosts, animate = true) {
     noResults.style.textAlign = "center";
     postSection.append(noResults);
   }
-
   
   data.forEach((post) => {
     const formatedText = post.excerpt.rendered;
@@ -120,6 +117,7 @@ function renderHTML(data, totalPosts, animate = true) {
     titleContainer.append(postTitle, postArticle);
     articleContainer.append(imgContainer, titleContainer);
     postSection.append(articleContainer);
+
   });
 
   if (animate) {
@@ -141,7 +139,7 @@ function renderHTML(data, totalPosts, animate = true) {
   }
 }
 
-//filter
+//filter by category
 category.addEventListener("change", () => {
   pages = 1;
   posts = []
@@ -149,8 +147,6 @@ category.addEventListener("change", () => {
   let found = categoriesArr.find((item) => item.name === category.value);
   found ? renderPage(`&categories=${found.id || ""}`, "") : renderPage("", "");
 });
-
-
 
 //search
 searchForm.addEventListener("submit", (e) => {
@@ -166,14 +162,18 @@ function search(cleaner) {
 
   renderPage("", urlConvert);
 }
+
+//Load more function
 loadMore.addEventListener("click", async () => {
   if (pages < total) {
     pages += 1;
     sortDate.value = "newest"
+
     renderPage('','',false)
   }
 });
 
+// sort by date
 sortDate.addEventListener("change", () => {
   let sortedValue;
 
@@ -192,6 +192,7 @@ sortDate.addEventListener("change", () => {
   renderHTML(sortedValue,total, true);
 });
 
+//Glues everything together
 async function renderPage(categoryValue = "", searchQuery = "", animate) {
   try {
     loader.classList.add("show");
