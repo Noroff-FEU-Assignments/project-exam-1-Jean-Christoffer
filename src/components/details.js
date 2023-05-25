@@ -105,7 +105,7 @@ function inputBorderCheck() {
 async function getComments(){
     try{
         const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`)
-        const response = await API.get(`comments?post=${id}`)
+        const response = await API.get(`comments?post=${id}&orderby=date&order=asc`)
         const comments = await response.json()
 
         return comments
