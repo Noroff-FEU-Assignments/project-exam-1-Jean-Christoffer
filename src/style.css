@@ -500,6 +500,7 @@ header, .nav{
 .post-section{
   overflow-x: hidden;
 }
+
 .search-form{
   align-items: center;
   gap: 10px;
@@ -511,8 +512,9 @@ header, .nav{
 
 .post-form-wrapper{
   align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap:10px;
 }
 .category, .sort-date{
   height: 50px;
@@ -521,7 +523,7 @@ header, .nav{
   transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
   border: 1px solid #ddd;
   border-radius: 3px;
-  margin-top: 40px;
+
 }
 .category:hover, .sort-date:hover{
   border: 1px solid #999;
@@ -920,6 +922,10 @@ footer{
   gap:10px;
   margin-top: 10px;
 }
+.search{
+  margin:0;
+}
+
 .input-container input, textarea{
   height: 40px;
   padding: 10px 20px;
@@ -927,6 +933,10 @@ footer{
   transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
   border: 1px solid #ddd;
   border-radius: 3px;
+}
+.search input,
+.search button{
+  height: 50px;
 }
 textarea{
   height:150px;
