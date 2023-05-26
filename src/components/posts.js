@@ -56,6 +56,7 @@ async function getData(categoryValue = "", searchQuery = "") {
       );
     }
     const data = await response.json();
+   
 
     total = response.headers.get("x-wp-totalpages");
 
@@ -97,7 +98,8 @@ function renderHTML(data, totalPosts, animate = true) {
     const imgContainer = document.createElement("a");
     imgContainer.className = "posts-img-container";
     const articleImg = document.createElement("img");
-    articleImg.src = `${post._embedded["wp:featuredmedia"][0].source_url}`;
+    
+    articleImg.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
     articleImg.alt = `${post._embedded["wp:featuredmedia"][0].alt_text}`;
     imgContainer.href = `details.html?id=${post.id}`;
     imgContainer.append(articleImg);
@@ -198,7 +200,7 @@ async function renderPage(categoryValue = "", searchQuery = "", animate) {
     loader.classList.add("show");
     const data = await getData(categoryValue, searchQuery);
     posts.push(...data)
-
+    console.log(posts)
     renderHTML(posts, total, animate);
   } catch (error) {
     console.log(error);
