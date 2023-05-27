@@ -54,7 +54,8 @@ async function renderHTML(data){
                 headerImageLink.href= `details.html?id=${post.id}`
 
                 const headerImage = document.createElement('img')
-                headerImage.src = `${post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url}`
+                headerImage.src = `${post._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large
+                .source_url}`
                 headerImage.alt = `${post._embedded['wp:featuredmedia'][0].alt_text}`
       
 
@@ -121,6 +122,7 @@ async function renderPage(){
         loader.classList.add('show')
         const data = await getData()
         renderHTML(data)
+        console.log(data)
 
     }catch(error){
         console.log(error)
