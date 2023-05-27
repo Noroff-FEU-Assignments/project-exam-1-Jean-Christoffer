@@ -223,15 +223,13 @@ header, .nav{
   flex-direction: column;
   align-items: center;
   scroll-behavior: smooth;
+
 }
 .wrapper .slider{
   white-space: nowrap;
   overflow: hidden;
   margin: 20px auto;
 
-}
-.wrapper{
-  min-height: 100vh;
 }
 
 @media(min-width:52rem){
