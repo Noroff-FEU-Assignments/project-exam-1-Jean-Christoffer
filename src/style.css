@@ -966,7 +966,7 @@ input,textarea{
   position: absolute;
   top: 50%;
   left: 50%;
-  display: block;
+  display: block; 
 }
 
 @keyframes rotator {
