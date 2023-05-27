@@ -231,6 +231,9 @@ header, .nav{
   margin: 20px auto;
 
 }
+.wrapper{
+  min-height: 100vh;
+}
 
 @media(min-width:52rem){
   .arrow{
@@ -242,6 +245,7 @@ header, .nav{
     height: 490px;
     width: var(  --size-xxl);
     margin: 0 auto;
+    min-height: 100%;
   }
   .slider{
     width: var(--size-xl);
