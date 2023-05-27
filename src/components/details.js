@@ -193,7 +193,7 @@ function renderHtml(data,comments = ''){
 
 articleHeader.addEventListener('click',()=>{
     modal.showModal()
-    console.log(dialog.nextSibling)
+    
     const body = document.querySelector('body')
     body.classList.add('stop-scrolling')
 })

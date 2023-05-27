@@ -122,7 +122,6 @@ async function renderPage(){
         loader.classList.add('show')
         const data = await getData()
         renderHTML(data)
-        console.log(data)
 
     }catch(error){
         console.log(error)

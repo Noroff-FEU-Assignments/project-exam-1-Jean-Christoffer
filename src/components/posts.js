@@ -200,7 +200,7 @@ async function renderPage(categoryValue = "", searchQuery = "", animate) {
     loader.classList.add("show");
     const data = await getData(categoryValue, searchQuery);
     posts.push(...data)
-    console.log(posts)
+  
     renderHTML(posts, total, animate);
   } catch (error) {
     console.log(error);
