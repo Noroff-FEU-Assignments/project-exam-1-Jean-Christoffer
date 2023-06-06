@@ -19,25 +19,25 @@
     />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap">
+    
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://kit.fontawesome.com/7cc6ea881f.js"
       crossorigin="anonymous"
+      defer
     ></script>
-    <script src="components/main.js" type="module" defer></script>
-    <script src="components/posts.js" type="module" defer></script>
+    <script src="components/main.js" type="module"></script>
+    <script src="components/posts.js" type="module"></script>
 
     <title>WAVE || Posts</title>
   </head>
@@ -45,10 +45,11 @@
     <div class="overlay"></div>
     <header class="flex">
       <div
-        class="hamburger"
-        aria-controls="nav"
-        aria-expanded="false"
-        role="button"
+      class="hamburger"
+      aria-controls="nav"
+      aria-expanded="false"
+      role="button" 
+      aria-label="Toggle navigation menu"
       >
         <span class="line top"></span>
         <span class="line middle"></span>

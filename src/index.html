@@ -18,27 +18,28 @@
       content="Ride the sound waves of electronic music with Wave - your ultimate guide to the latest beats and grooves!"
     />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
     <link rel="stylesheet" href="style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap">
+    
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+    
 
     <script
       src="https://kit.fontawesome.com/7cc6ea881f.js"
       crossorigin="anonymous"
+      defer
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="components/main.js" type="module" defer></script>
-    <script src="components/home.js" type="module" defer></script>
+    <script src="components/main.js" type="module" ></script>
+    <script src="components/home.js" type="module" ></script>
     <title>WAVE || Home</title>
 
   </head>
@@ -49,7 +50,8 @@
         class="hamburger"
         aria-controls="nav"
         aria-expanded="false"
-        role="button"
+        role="button" 
+        aria-label="Toggle navigation menu"
       >
         <span class="line top"></span>
         <span class="line middle"></span>
@@ -66,7 +68,7 @@
       </nav>
     </header>
     <main id="content">
-      <section class="home-header">
+      <section class="home-header" >
         <div class="hero-text">
           <h1>Welcome to <span class="title-site title-home">WAVE</span></h1>
           <h2>The number one electro blog</h2>
