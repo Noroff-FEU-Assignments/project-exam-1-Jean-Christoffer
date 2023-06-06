@@ -19,8 +19,11 @@ Install my-project with npm
 
 ```bash
 git clone https://github.com/Noroff-FEU-Assignments/project-exam-1-Jean-Christoffer.git
+
 npm install
+
 cd project-exam-1-Jean-Christoffer
+
 npm run dev
 ```
     
