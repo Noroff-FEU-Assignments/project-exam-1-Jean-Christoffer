@@ -5,7 +5,7 @@ Wave is a electronic music blog, made as my first year Exam, with focus on acces
 
 ## Screenshots
 
-![App Screenshot](screenshot.jpg)
+![App Screenshot](src/images/screenshot.jpg)
 
 
 ## Built with
@@ -20,7 +20,7 @@ Wave is a electronic music blog, made as my first year Exam, with focus on acces
 Install my-project with npm
 
 ```bash
-git clone "https://github.com/Noroff-FEU-Assignments/project-exam-1-Jean-Christoffer.git"
+git clone https://github.com/Noroff-FEU-Assignments/project-exam-1-Jean-Christoffer.git
 npm install
 cd project-exam-1-Jean-Christoffer
 npm run dev
