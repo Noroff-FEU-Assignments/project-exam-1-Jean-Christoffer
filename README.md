@@ -3,8 +3,6 @@
 
 Wave is a electronic music blog, made as my first year Exam, with focus on accessability, performance and responsive design. 
 
-## Screenshots
-
 ![App Screenshot](src/images/screenshot.jpg)
 
 
