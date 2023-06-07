@@ -24,6 +24,6 @@ npm install
 
 cd project-exam-1-Jean-Christoffer
 
-npm run dev
+
 ```
     
