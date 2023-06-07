@@ -1,10 +1,17 @@
 
 # Wave
 
-Wave is a electronic music blog, made as my first year Exam, with focus on accessability, performance and responsive design. 
 
 ![App Screenshot](src/images/screenshot.jpg)
 
+## Description
+Wave is a electronic music blog, made as my first year Exam, with focus on accessability, performance and responsive design.
+
+## Features
+- Search 
+- Sort
+- Contact-form 7 integration
+- Post comments
 
 ## Built with
 
@@ -13,6 +20,7 @@ Wave is a electronic music blog, made as my first year Exam, with focus on acces
 - Javascript
 - Wordpress REST API
 - Vite
+- 
 ## Installation
 
 Install my-project with npm
