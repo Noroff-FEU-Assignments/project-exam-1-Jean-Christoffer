@@ -23,14 +23,16 @@ Wave is a electronic music blog, made as my first year Exam, with focus on acces
 - 
 ## Installation
 
+1. clone repo
 
 ```bash
 git clone https://github.com/Noroff-FEU-Assignments/project-exam-1-Jean-Christoffer.git
 
 cd project-exam-1-Jean-Christoffer
+```
+2. install dependencies
 
+```bash
 npm install
-
-
 ```
     
