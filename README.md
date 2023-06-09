@@ -20,7 +20,7 @@ Wave is a electronic music blog, made as my first year Exam, with focus on acces
 - Javascript
 - Wordpress REST API
 - Vite
-- 
+
 ## Installation
 
 1. clone repo
